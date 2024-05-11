@@ -88,7 +88,7 @@ float4 PS(VS_OUTPUT input) : SV_Target
         finalColor = (color0 + color1) * 0.5f;
         // finalColor = ((1.0f - color1.a) * color0) + (color1.a * color1);
     }
-    //
+    // ChromaticAberration
     else if(mode == 7)
     {
         float2 distortion = float2(params0, -params1);
@@ -96,6 +96,14 @@ float4 PS(VS_OUTPUT input) : SV_Target
         float4 greenChannel = textureMap0.Sample(textureSampler, input.texCoord);
         float4 blueChannel = textureMap0.Sample(textureSampler, input.texCoord + distortion.y * input.texCoord);
         finalColor = float4(redChannel.r, greenChannel.g, blueChannel.b, 1.0f);
+    }
+    //Wave
+    else if(mode == 8)
+    {
+        float waveValue = input.texCoord.x * (3.14159f * params1);
+        float2 texCoord = input.texCoord;
+        texCoord.y += sin(waveValue) * params0;
+        finalColor = textureMap0.Sample(textureSampler, texCoord);
     }
     return finalColor;
 }

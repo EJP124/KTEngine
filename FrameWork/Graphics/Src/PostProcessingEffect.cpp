@@ -18,7 +18,8 @@ namespace
 		"Blur",
 		"Combine2",
 		"MotionBlur",
-		"ChromaticAberration"
+		"ChromaticAberration",
+		"Wave"
 	};
 }
 
@@ -80,6 +81,12 @@ void PostProcessingEffect::Begin()
 		data.params1 = mAberrationValue;
 	}
 	break;
+	case Mode::Wave:
+	{
+		data.params0 = mWaveLength;
+		data.params1 = mNumWaves;
+	}
+	break;
 	default:
 		break;
 	}
@@ -112,6 +119,8 @@ void PostProcessingEffect::DebugUI()
 		ImGui::DragFloat("MirrorX", &mMirrorX, 0.1f, -1.0f, 1.0f);
 		ImGui::DragFloat("BlurStrength", &mBlurStrength, 1.0f, 0.0f, 100.0f);
 		ImGui::DragFloat("AberrationValue", &mAberrationValue, 0.001f, 0.0f, 1.0f);
+		ImGui::DragFloat("WaveLength", &mWaveLength, 0.001f, 0.0f, 1.0f);
+		ImGui::DragFloat("NumWaves", &mNumWaves, 1.0f, 0.0f, 1000.0f);
 	}
 }
 

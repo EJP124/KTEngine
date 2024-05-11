@@ -22,7 +22,8 @@ namespace KTEngine::Graphics
 			Blur,
 			Combine2,
 			MotionBlur,
-			ChromaticAberration
+			ChromaticAberration,
+			Wave
 		};
 
 		void Initialize(const std::filesystem::path& filePath);
@@ -60,5 +61,7 @@ namespace KTEngine::Graphics
 		float mMirrorY = 1.0f;
 		float mBlurStrength = 5.0f;
 		float mAberrationValue = 0.005f;
+		float mWaveLength = 0.05f;
+		float mNumWaves = 20.0f;
 	};
 }
