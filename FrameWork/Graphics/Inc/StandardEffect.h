@@ -10,6 +10,7 @@
 namespace KTEngine::Graphics
 {
 	class Camera;
+	class Texture;
 	struct RenderObject;
 
 	class StandardEffect
@@ -24,7 +25,10 @@ namespace KTEngine::Graphics
 		void Render(const RenderObject& renderObject);
 
 		void SetCamera(const Camera& camera);
+		void SetLightCamera(const Camera& camera);
 		void SetDirectionalLight(const DirectionalLight& directionalLight);
+		void SetShadowMap(const Texture& shadowMap);
+		void SetShadowMapFar(const Texture& shadowMapFar);
 
 		void DebugUI();
 
@@ -33,6 +37,8 @@ namespace KTEngine::Graphics
 		struct TransformData
 		{
 			Math::Matrix4 wvp;
+			Math::Matrix4 lwvp;
+			Math::Matrix4 lfwvp;
 			Math::Matrix4 world;
 			Math::Vector3 ViewPosition;
 			float padding = 0.0f;
@@ -44,8 +50,9 @@ namespace KTEngine::Graphics
 			int useSpecMap = 1;
 			int useLighting = 1;
 			int useBumpMap = 1;
+			int useShadowMap = 1;
 			float bumpWeight = 1.0f;
-			float padding[2] = { 0.0f };
+			float depthBias = 0.0f;
 		};
 
 		using TransformBuffer = TypedConstantBuffer<TransformData>;
@@ -63,6 +70,9 @@ namespace KTEngine::Graphics
 		
 		SettingsData mSettingsData;
 		const Camera* mCamera = nullptr;
+		const Camera* mLightCamera = nullptr;
 		const DirectionalLight* mDirectionalLight = nullptr;
+		const Texture* mShadowMap = nullptr;
+		const Texture* mShadowMapFar = nullptr;
 	};
 }
