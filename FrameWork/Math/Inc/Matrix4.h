@@ -26,7 +26,7 @@ namespace KTEngine::Math
 		{
 
 		}
-
+		
 		constexpr Matrix4(
 			float _11, float _12, float _13, float _14,
 			float _21, float _22, float _23, float _24,
@@ -38,6 +38,152 @@ namespace KTEngine::Math
 			, _31(_31), _32(_32), _33(_33), _34(_34)
 			, _41(_41), _42(_42), _43(_43), _44(_44)
 		{}
+
+		static Matrix4 Inverse(const Matrix4& m)
+		{
+			Matrix4 inv;
+			float det;
+			int i;
+
+			inv.v[0] = m.v[5] * m.v[10] * m.v[15] -
+				m.v[5] * m.v[11] * m.v[14] -
+				m.v[9] * m.v[6] * m.v[15] +
+				m.v[9] * m.v[7] * m.v[14] +
+				m.v[13] * m.v[6] * m.v[11] -
+				m.v[13] * m.v[7] * m.v[10];
+
+			inv.v[4] = -m.v[4] * m.v[10] * m.v[15] +
+				m.v[4] * m.v[11] * m.v[14] +
+				m.v[8] * m.v[6] * m.v[15] -
+				m.v[8] * m.v[7] * m.v[14] -
+				m.v[12] * m.v[6] * m.v[11] +
+				m.v[12] * m.v[7] * m.v[10];
+
+			inv.v[8] = m.v[4] * m.v[9] * m.v[15] -
+				m.v[4] * m.v[11] * m.v[13] -
+				m.v[8] * m.v[5] * m.v[15] +
+				m.v[8] * m.v[7] * m.v[13] +
+				m.v[12] * m.v[5] * m.v[11] -
+				m.v[12] * m.v[7] * m.v[9];
+
+			inv.v[12] = -m.v[4] * m.v[9] * m.v[14] +
+				m.v[4] * m.v[10] * m.v[13] +
+				m.v[8] * m.v[5] * m.v[14] -
+				m.v[8] * m.v[6] * m.v[13] -
+				m.v[12] * m.v[5] * m.v[10] +
+				m.v[12] * m.v[6] * m.v[9];
+
+			inv.v[1] = -m.v[1] * m.v[10] * m.v[15] +
+				m.v[1] * m.v[11] * m.v[14] +
+				m.v[9] * m.v[2] * m.v[15] -
+				m.v[9] * m.v[3] * m.v[14] -
+				m.v[13] * m.v[2] * m.v[11] +
+				m.v[13] * m.v[3] * m.v[10];
+
+			inv.v[5] = m.v[0] * m.v[10] * m.v[15] -
+				m.v[0] * m.v[11] * m.v[14] -
+				m.v[8] * m.v[2] * m.v[15] +
+				m.v[8] * m.v[3] * m.v[14] +
+				m.v[12] * m.v[2] * m.v[11] -
+				m.v[12] * m.v[3] * m.v[10];
+
+			inv.v[9] = -m.v[0] * m.v[9] * m.v[15] +
+				m.v[0] * m.v[11] * m.v[13] +
+				m.v[8] * m.v[1] * m.v[15] -
+				m.v[8] * m.v[3] * m.v[13] -
+				m.v[12] * m.v[1] * m.v[11] +
+				m.v[12] * m.v[3] * m.v[9];
+
+			inv.v[13] = m.v[0] * m.v[9] * m.v[14] -
+				m.v[0] * m.v[10] * m.v[13] -
+				m.v[8] * m.v[1] * m.v[14] +
+				m.v[8] * m.v[2] * m.v[13] +
+				m.v[12] * m.v[1] * m.v[10] -
+				m.v[12] * m.v[2] * m.v[9];
+
+			inv.v[2] = m.v[1] * m.v[6] * m.v[15] -
+				m.v[1] * m.v[7] * m.v[14] -
+				m.v[5] * m.v[2] * m.v[15] +
+				m.v[5] * m.v[3] * m.v[14] +
+				m.v[13] * m.v[2] * m.v[7] -
+				m.v[13] * m.v[3] * m.v[6];
+
+			inv.v[6] = -m.v[0] * m.v[6] * m.v[15] +
+				m.v[0] * m.v[7] * m.v[14] +
+				m.v[4] * m.v[2] * m.v[15] -
+				m.v[4] * m.v[3] * m.v[14] -
+				m.v[12] * m.v[2] * m.v[7] +
+				m.v[12] * m.v[3] * m.v[6];
+
+			inv.v[10] = m.v[0] * m.v[5] * m.v[15] -
+				m.v[0] * m.v[7] * m.v[13] -
+				m.v[4] * m.v[1] * m.v[15] +
+				m.v[4] * m.v[3] * m.v[13] +
+				m.v[12] * m.v[1] * m.v[7] -
+				m.v[12] * m.v[3] * m.v[5];
+
+			inv.v[14] = -m.v[0] * m.v[5] * m.v[14] +
+				m.v[0] * m.v[6] * m.v[13] +
+				m.v[4] * m.v[1] * m.v[14] -
+				m.v[4] * m.v[2] * m.v[13] -
+				m.v[12] * m.v[1] * m.v[6] +
+				m.v[12] * m.v[2] * m.v[5];
+
+			inv.v[3] = -m.v[1] * m.v[6] * m.v[11] +
+				m.v[1] * m.v[7] * m.v[10] +
+				m.v[5] * m.v[2] * m.v[11] -
+				m.v[5] * m.v[3] * m.v[10] -
+				m.v[9] * m.v[2] * m.v[7] +
+				m.v[9] * m.v[3] * m.v[6];
+
+			inv.v[7] = m.v[0] * m.v[6] * m.v[11] -
+				m.v[0] * m.v[7] * m.v[10] -
+				m.v[4] * m.v[2] * m.v[11] +
+				m.v[4] * m.v[3] * m.v[10] +
+				m.v[8] * m.v[2] * m.v[7] -
+				m.v[8] * m.v[3] * m.v[6];
+
+			inv.v[11] = -m.v[0] * m.v[5] * m.v[11] +
+				m.v[0] * m.v[7] * m.v[9] +
+				m.v[4] * m.v[1] * m.v[11] -
+				m.v[4] * m.v[3] * m.v[9] -
+				m.v[8] * m.v[1] * m.v[7] +
+				m.v[8] * m.v[3] * m.v[5];
+
+			inv.v[15] = m.v[0] * m.v[5] * m.v[10] -
+				m.v[0] * m.v[6] * m.v[9] -
+				m.v[4] * m.v[1] * m.v[10] +
+				m.v[4] * m.v[2] * m.v[9] +
+				m.v[8] * m.v[1] * m.v[6] -
+				m.v[8] * m.v[2] * m.v[5];
+
+			det = m.v[0] * inv.v[0] + m.v[1] * inv.v[4] + m.v[2] * inv.v[8] + m.v[3] * inv.v[12];
+
+			if (det == 0)
+				return Matrix4::Identity;
+
+			det = 1.0f / det;
+
+			for (i = 0; i < 16; i++)
+				inv.v[i] = inv.v[i] * det;
+
+			return inv;
+		}
+
+		static Matrix4 Transpose(const Matrix4& m)
+		{
+			return Matrix4(
+				m._11, m._21, m._31, m._41,
+				m._12, m._22, m._32, m._42,
+				m._13, m._23, m._33, m._43,
+				m._14, m._24, m._34, m._44
+			);
+		}
+
+		static Matrix4 InverseTranspose(const Matrix4& m)
+		{
+			return Transpose(Inverse(m));
+		}
 
 		const static Matrix4 Zero;
 		const static Matrix4 Identity;
