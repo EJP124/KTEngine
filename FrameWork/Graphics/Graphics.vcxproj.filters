@@ -108,6 +108,18 @@
     <ClInclude Include="Inc\Reflection.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\GeometryShader.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Keyframe.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Animation.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\AnimationBuilder.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiled.cpp">
@@ -180,6 +192,15 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\Reflection.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GeometryShader.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Animation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\AnimationBuilder.cpp">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>

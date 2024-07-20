@@ -20,82 +20,36 @@ void GameState::Initialize()
 	ModelIO::LoadMaterial("../../Assets/Models/Character01/Mutant.fbx", model);
 	mCharacter = CreateRenderGroup(model);
 
-	Mesh sphere = MeshBuilder::CreateSphere(20, 20, 0.5);
-	mBall.meshBuffer.Initialize(sphere);
-	mBall.transform.rotation = Quaternion(0, 1, 0, 0);
 
-	mCameraTarget.SetPosition(mBall.transform.position);
-	mCameraTarget.SetLookAt({ mBall.transform.position.x, mBall.transform.position.y , mBall.transform.position.z });
-	
-
-	Mesh groundMesh = MeshBuilder::CreateHorizontalPlane(20, 20, 1.0f);
-	mGround.meshBuffer.Initialize(groundMesh);
-	mGround.diffuseMapId = TextureManager::Get()->LoadTexture("misc/concrete.jpg");
-
+	Model model2;
+	ModelIO::LoadModel("../../Assets/Models/Character02/Warrok_Kurniawan.fbx", model2);
+	ModelIO::LoadMaterial("../../Assets/Models/Character02/Warrok_Kurniawan.fbx", model2);
 	std::filesystem::path shaderFilePath = (L"../../Assets/Shaders/Standard.fx");
 	mStandardEffect.Initialize(shaderFilePath);
 	mStandardEffect.SetCamera(mCamera);
 	mStandardEffect.SetDirectionalLight(mDirectionalLight);
-	mStandardEffect.SetLightCamera(mShadowEffect.GetLightCamera());
-	mStandardEffect.SetShadowMap(mShadowEffect.GetDepthMap());
-	mStandardEffect.SetShadowMapFar(mShadowEffect.GetDepthMap());
-
-	mReflectionEffect.Initialize();
-	mReflectionEffect.SetCamera(mCamera);
-	mShadowEffect.Initialize();
-	mShadowEffect.SetDirectionalLight(mDirectionalLight);
-	
-	fov = 2.5f;
 }
 
 void GameState::Terminate()
 {
 	mStandardEffect.Terminate();
-	mGround.Terminate();
 	CleanupRenderGroup(mCharacter);
 }
 
 void GameState::Update(float deltaTime)
 {
 	UpdateCameraControl(deltaTime);
-	SetRenderGroupPosition(mCharacter, positionSet);
-	mCameraTarget.SetPosition(mBall.transform.position);
-	Vector3 reDir= Normalize(mCamera.GetPosition() - mCameraTarget.GetPosition());
-	mCameraTarget.SetLookAt(reDir);
-	mBall.transform.position = positionSetBall;
-	mCameraTarget.SetFov(fov);
+
 }
 
 void GameState::Render()
 {
-	//SimpleDraw::AddGroundPlane(10.0f, Colors::White);
-	//SimpleDraw::Render(mCamera);
-	
-	mStandardEffect.SetCamera(mCameraTarget);
-		mReflectionEffect.mTarget.BeginRender();
-			mStandardEffect.Begin();
-			mStandardEffect.Render(mGround);
-				DrawRenderGroup(mStandardEffect, mCharacter);
-			mStandardEffect.End();
-	mReflectionEffect.mTarget.EndRender();
-
-
-	mStandardEffect.SetCamera(mCamera);
-		
-	mReflectionEffect.Begin();
-		mReflectionEffect.Render(mBall);
-	mReflectionEffect.End();
-
-	mShadowEffect.Begin();
-		DrawRenderGroup(mShadowEffect, mCharacter);
-	mShadowEffect.End();
-
+	SimpleDraw::AddTransform(mTransform.GetMatrix4());
+	SimpleDraw::AddGroundPlane(10.0f, Colors::White);
+	SimpleDraw::Render(mCamera);
 	mStandardEffect.Begin();
 		DrawRenderGroup(mStandardEffect, mCharacter);
-		
-		mStandardEffect.Render(mGround);
 	mStandardEffect.End();
-
 }
 void GameState::DebugUI()
 {
@@ -106,17 +60,33 @@ void GameState::DebugUI()
 		{
 			mDirectionalLight.direction = Math::Normalize(mDirectionalLight.direction);
 		}
-		ImGui::DragFloat3("Position", &positionSet.x, 0.01f);
-		ImGui::DragFloat3("Position2", &positionSetBall.x, 0.01f);
-		ImGui::DragFloat("FOV", &fov, 0.01f);
 		ImGui::ColorEdit4("Ambient##Light", &mDirectionalLight.ambient.r);
 		ImGui::ColorEdit4("Diffuse##Light", &mDirectionalLight.diffuse.r);
 		ImGui::ColorEdit4("Specular##Light", &mDirectionalLight.specular.r);
 	}
 
+	bool updateRotation = false;
+	if (ImGui::DragFloat("PlayerYaw", &mYaw, 0.01f))
+	{
+		updateRotation = true;
+	}
+	if (ImGui::DragFloat("PlayerPitch", &mPitch, 0.01f))
+	{
+		updateRotation = true;
+	}
+	if (ImGui::DragFloat("PlayerRoll", &mRoll, 0.01f))
+	{
+		updateRotation = true;
+	}
 	mStandardEffect.DebugUI();
-
 	ImGui::End();
+
+	if (updateRotation)
+	{
+		Quaternion q = Quaternion::CreateFromYawPitchRoll(mYaw, mPitch, mRoll);
+		mTransform.rotation = q;
+		
+	}
 }
 
 void GameState::UpdateCameraControl(float deltaTime)

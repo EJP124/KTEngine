@@ -144,6 +144,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Inc\Animation.h" />
+    <ClInclude Include="Inc\AnimationBuilder.h" />
     <ClInclude Include="Inc\BlendState.h" />
     <ClInclude Include="Inc\Camera.h" />
     <ClInclude Include="Inc\Colors.h" />
@@ -151,8 +153,10 @@
     <ClInclude Include="Inc\ConstantBuffer.h" />
     <ClInclude Include="Inc\DebugUI.h" />
     <ClInclude Include="Inc\GaussianBlurEffect.h" />
+    <ClInclude Include="Inc\GeometryShader.h" />
     <ClInclude Include="Inc\Graphics.h" />
     <ClInclude Include="Inc\GraphicsSystem.h" />
+    <ClInclude Include="Inc\Keyframe.h" />
     <ClInclude Include="Inc\LightTypes.h" />
     <ClInclude Include="Inc\Material.h" />
     <ClInclude Include="Inc\MeshBuffer.h" />
@@ -179,11 +183,14 @@
     <ClInclude Include="Src\Precompiled.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Animation.cpp" />
+    <ClCompile Include="Src\AnimationBuilder.cpp" />
     <ClCompile Include="Src\BlendState.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\ConstantBuffer.cpp" />
     <ClCompile Include="Src\DebugUI.cpp" />
     <ClCompile Include="Src\GaussianBlurEffect.cpp" />
+    <ClCompile Include="Src\GeometryShader.cpp" />
     <ClCompile Include="Src\GraphicsSystem.cpp" />
     <ClCompile Include="Src\MeshBuffer.cpp" />
     <ClCompile Include="Src\MeshBuilder.cpp" />
