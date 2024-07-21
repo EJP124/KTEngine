@@ -14,19 +14,19 @@ namespace
 	}
 }
 
-AnimationBuilder& AnimationBuilder::AddPositionKey(const Math::Vector3& pos, float time, EaseType easeType = EaseType::Linear)
+AnimationBuilder& AnimationBuilder::AddPositionKey(const Math::Vector3& pos, float time, EaseType easeType)
 {
 	PushKey(mWorkingCopy.mPositionKeys, pos, time, easeType);
 	mWorkingCopy.mDuration = Math::Max(mWorkingCopy.mDuration, time);
 	return *this;
 }
-AnimationBuilder& AnimationBuilder::AddRotationKey(const Math::Quaternion& rot, float time, EaseType easeType = EaseType::Linear)
+AnimationBuilder& AnimationBuilder::AddRotationKey(const Math::Quaternion& rot, float time, EaseType easeType)
 {
 	PushKey(mWorkingCopy.mRotationKeys, rot, time, easeType);
 	mWorkingCopy.mDuration = Math::Max(mWorkingCopy.mDuration, time);
 	return *this;
 }
-AnimationBuilder& AnimationBuilder::AddScaleKey(const Math::Vector3& scale, float time, EaseType easeType = EaseType::Linear)
+AnimationBuilder& AnimationBuilder::AddScaleKey(const Math::Vector3& scale, float time, EaseType easeType)
 {
 	PushKey(mWorkingCopy.mScaleKeys, scale, time, easeType);
 	mWorkingCopy.mDuration = Math::Max(mWorkingCopy.mDuration, time);
