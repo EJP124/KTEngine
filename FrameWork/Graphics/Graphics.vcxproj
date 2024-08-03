@@ -144,6 +144,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Inc\AnimationClip.h" />
+    <ClInclude Include="Inc\AnimationUtil.h" />
     <ClInclude Include="Inc\Animation.h" />
     <ClInclude Include="Inc\AnimationBuilder.h" />
     <ClInclude Include="Inc\BlendState.h" />
@@ -165,6 +167,7 @@
     <ClInclude Include="Inc\MeshTypes.h" />
     <ClInclude Include="Inc\Model.h" />
     <ClInclude Include="Inc\ModelIO.h" />
+    <ClInclude Include="Inc\ModelManager.h" />
     <ClInclude Include="Inc\PixelShader.h" />
     <ClInclude Include="Inc\PostProcessingEffect.h" />
     <ClInclude Include="Inc\Reflection.h" />
@@ -187,6 +190,7 @@
   <ItemGroup>
     <ClCompile Include="Src\Animation.cpp" />
     <ClCompile Include="Src\AnimationBuilder.cpp" />
+    <ClCompile Include="Src\AnimationUtil.cpp" />
     <ClCompile Include="Src\BlendState.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\ConstantBuffer.cpp" />
@@ -197,6 +201,7 @@
     <ClCompile Include="Src\MeshBuffer.cpp" />
     <ClCompile Include="Src\MeshBuilder.cpp" />
     <ClCompile Include="Src\ModelIO.cpp" />
+    <ClCompile Include="Src\ModelManager.cpp" />
     <ClCompile Include="Src\PixelShader.cpp" />
     <ClCompile Include="Src\PostProcessingEffect.cpp" />
     <ClCompile Include="Src\Precompiled.cpp">

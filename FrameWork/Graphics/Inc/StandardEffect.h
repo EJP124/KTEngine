@@ -7,6 +7,7 @@
 #include "Sampler.h"
 #include "VertexShader.h"
 
+
 namespace KTEngine::Graphics
 {
 	class Camera;
@@ -51,19 +52,23 @@ namespace KTEngine::Graphics
 			int useLighting = 1;
 			int useBumpMap = 1;
 			int useShadowMap = 1;
+			int useSkinning = 1;
 			float bumpWeight = 1.0f;
 			float depthBias = 0.0f;
+			float padding[3] = { 0.0f };
 		};
 
 		using TransformBuffer = TypedConstantBuffer<TransformData>;
 		using SettingsBuffer = TypedConstantBuffer<SettingsData>;
 		using LightBuffer = TypedConstantBuffer<DirectionalLight>;
 		using MaterialBuffer = TypedConstantBuffer<Material>;
+		using BoneTransformBuffer = ConstantBuffer;
 
 		TransformBuffer mTransformBuffer;
 		SettingsBuffer mSettingsBuffer;
 		LightBuffer mLightBuffer;
 		MaterialBuffer mMaterialBuffer;
+		BoneTransformBuffer mBoneTransformBuffer;
 		Sampler mSampler;
 		VertexShader mVertexShader;
 		PixelShader mPixelShader;

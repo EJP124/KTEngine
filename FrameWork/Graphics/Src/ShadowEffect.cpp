@@ -7,6 +7,7 @@
 using namespace KTEngine;
 using namespace KTEngine::Graphics;
 
+
 void ShadowEffect::Initialize()
 {
 	std::filesystem::path shaderFile = "../../Assets/Shaders/Shadow.fx";

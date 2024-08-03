@@ -4,6 +4,7 @@
 #include "Material.h"
 #include "TextureManager.h"
 #include "Transform.h"
+#include "ModelManager.h"
 
 
 namespace KTEngine::Graphics
@@ -23,10 +24,14 @@ namespace KTEngine::Graphics
 		TextureId normalMapId;
 		TextureId specMapId;
 		TextureId bumpMapId;
+
+		ModelId modelId = 0;
+		const Skeleton* skeleton = nullptr;
 	};
 
 	using RenderGroup = std::vector<RenderObject>;
-	[[nodiscard]]RenderGroup CreateRenderGroup(const Model& model);
+	[[nodiscard]]RenderGroup CreateRenderGroup(ModelId& id);
+	[[nodiscard]]RenderGroup CreateRenderGroup(const Model& model, ModelId id = 0);
 	void CleanupRenderGroup(RenderGroup& renderGroup);
 
 	void SetRenderGroupPosition(RenderGroup& renderGroup, const Math::Vector3& pos);
