@@ -16,6 +16,9 @@ void GameState::Initialize()
 
 	//create shape
 	mModelId = ModelManager::Get()->LoadModelId("../../Assets/Models/Character02/Warrok_Kurniawan.model");
+	//ModelManager::Get()->AddAnimation("../../Assets/Models/Character02/Warrok_Kurniawan.model");
+	//ModelManager::Get()->AddAnimation("../../Assets/Models/Character02/Warrok_Kurniawan.model");
+	//ModelManager::Get()->AddAnimation("../../Assets/Models/Character02/Warrok_Kurniawan.model");
 	mCharacter2 = CreateRenderGroup(mModelId);
 	std::filesystem::path shaderFilePath = (L"../../Assets/Shaders/Standard.fx");
 	mStandardEffect.Initialize(shaderFilePath);

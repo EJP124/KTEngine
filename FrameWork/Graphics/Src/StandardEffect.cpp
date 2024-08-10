@@ -37,6 +37,8 @@ void StandardEffect::Terminate()
 void StandardEffect::Begin()
 {
 	ASSERT(mCamera != nullptr, "StandardEffect: no camera set!");
+	ASSERT(mDirectionalLight != nullptr, "StandardEffect: no light set!");
+
 	mVertexShader.Bind();
 	mPixelShader.Bind();
 	
@@ -111,7 +113,7 @@ void StandardEffect::Render(const RenderObject& renderObject)
 	if (settingsData.useSkinning)
 	{
 		AnimationUtil::BoneTransforms boneTransforms;
-		AnimationUtil::ComputeBoneTransforms(renderObject.modelId, boneTransforms);
+		AnimationUtil::ComputeBoneTransforms(renderObject.modelId, boneTransforms, renderObject.animator);
 		AnimationUtil::ApplyBoneOffsets(renderObject.modelId, boneTransforms);
 
 		for (Math::Matrix4& transform : boneTransforms)

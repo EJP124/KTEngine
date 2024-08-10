@@ -4,6 +4,14 @@
 namespace KTEngine::Graphics
 {
 	struct Model;
+	struct Animation;
+
+	class AnimationIO
+	{
+	public:
+		static void Write(FILE* file, const Animation& animation);
+		static void Read(FILE* file, Animation& animation);
+	};
 
 	namespace ModelIO
 	{
@@ -15,5 +23,8 @@ namespace KTEngine::Graphics
 
 		bool SaveSkeleton(std::filesystem::path filePath, const Model& model);
 		bool LoadSkeleton(std::filesystem::path filePath, Model& model);
+
+		bool SaveAnimation(std::filesystem::path filePath, const Model& model);
+		bool LoadAnimation(std::filesystem::path filePath, Model& model);
 	}
 }

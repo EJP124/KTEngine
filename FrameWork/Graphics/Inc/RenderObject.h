@@ -10,6 +10,7 @@
 namespace KTEngine::Graphics
 {
 	struct Model;
+	class Animator;
 
 	struct RenderObject
 	{
@@ -27,11 +28,12 @@ namespace KTEngine::Graphics
 
 		ModelId modelId = 0;
 		const Skeleton* skeleton = nullptr;
+		const Animator* animator = nullptr;
 	};
 
 	using RenderGroup = std::vector<RenderObject>;
-	[[nodiscard]]RenderGroup CreateRenderGroup(ModelId& id);
-	[[nodiscard]]RenderGroup CreateRenderGroup(const Model& model, ModelId id = 0);
+	[[nodiscard]]RenderGroup CreateRenderGroup(ModelId& id, const Animator* animator = nullptr);
+	[[nodiscard]]RenderGroup CreateRenderGroup(const Model& model, ModelId id = 0, const Animator* animator = nullptr);
 	void CleanupRenderGroup(RenderGroup& renderGroup);
 
 	void SetRenderGroupPosition(RenderGroup& renderGroup, const Math::Vector3& pos);

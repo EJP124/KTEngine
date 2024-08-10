@@ -442,9 +442,9 @@ int main(int argc, char* argv[])
 				for (uint32_t keyIndex = 0; keyIndex < aiBoneAnim->mNumScalingKeys; ++keyIndex)
 				{
 					const aiVectorKey& scale = aiBoneAnim->mScalingKeys[keyIndex];
-					builder.AddPositionKey(ToVector3(scale.mValue), static_cast<float>(scale.mTime));
-					*boneAnimation = builder.Build();
+					builder.AddScaleKey(ToVector3(scale.mValue), static_cast<float>(scale.mTime));
 				}
+					*boneAnimation = builder.Build();
 			}
 		}
 	}
@@ -477,6 +477,16 @@ int main(int argc, char* argv[])
 	else
 	{
 		printf("Failed to save Skeleton data . . .\n");
+	}
+
+	printf("Saving Animation. . .\n");
+	if (ModelIO::SaveAnimation(args.outputFileName, model))
+	{
+		printf("Saved Animation Success. . .\n");
+	}
+	else
+	{
+		printf("Failed to save Animation data . . .\n");
 	}
 
 	

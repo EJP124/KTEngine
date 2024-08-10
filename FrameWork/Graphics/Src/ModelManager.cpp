@@ -1,5 +1,6 @@
 #include "Precompiled.h"
 #include "ModelManager.h"
+
 #include "ModelIO.h"
 
 using namespace KTEngine;
@@ -40,8 +41,18 @@ ModelId ModelManager::LoadModelId(const std::filesystem::path& filepath)
 		ModelIO::LoadModel(filepath, *modelPtr);
 		ModelIO::LoadMaterial(filepath, *modelPtr);
 		ModelIO::LoadSkeleton(filepath, *modelPtr);
+		ModelIO::LoadAnimation(filepath, *modelPtr);
 	}
 	return modelId;
+}
+
+void ModelManager::AddAnimation(ModelId id, const std::filesystem::path& filepath)
+{
+	auto model = mInventory.find(id);
+	if (model != mInventory.end())
+	{
+		ModelIO::LoadAnimation(filepath, *model->second);
+	}
 }
 
 const Model* ModelManager::GetModel(ModelId id) const
