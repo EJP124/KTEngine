@@ -6,6 +6,7 @@ using namespace KTEngine;
 using namespace KTEngine::Core;
 using namespace KTEngine::Graphics;
 using namespace KTEngine::Input;
+using namespace KTEngine::Physics;
 
 void App::ChangeState(const std::string& stateName)
 {
@@ -36,6 +37,9 @@ void App::Run(const AppConfig& config)
 	TextureManager::StaticInitialize("../../Assets/Textures");
 	ModelManager::StaticInitialize();
 
+	PhysicsWorld::Settings settings;
+	PhysicsWorld::StaticInitialize(settings);
+
 	ASSERT(mCurrentState != nullptr, "App: need an app state");
 	mCurrentState->Initialize();
 
@@ -43,8 +47,10 @@ void App::Run(const AppConfig& config)
 	while (mRunning)
 	{
 		myWindow.ProcessMessage();
+
 		InputSystem* input = InputSystem::Get();
 		input->Update();
+
 		if (!myWindow.IsActive() || input->IsKeyPressed(KeyCode::ESCAPE))
 		{
 			Quit();
@@ -58,7 +64,11 @@ void App::Run(const AppConfig& config)
 			mCurrentState->Initialize();
 		}
 		float deltaTime = TimeUtil::GetDeltaTime();
-		mCurrentState->Update(deltaTime);
+		if (deltaTime < 0.5f)
+		{
+			PhysicsWorld::Get()->Update(deltaTime);
+			mCurrentState->Update(deltaTime);
+		}
 		GraphicsSystem* gs = GraphicsSystem::Get();
 		gs->BeginRender();
 			mCurrentState->Render();
@@ -67,8 +77,10 @@ void App::Run(const AppConfig& config)
 			DebugUI::EndRender();
 		gs->EndRender();
 	}
+
 	mCurrentState->Terminate();
 
+	PhysicsWorld::StaticTerminate();
 	ModelManager::StaticTerminate();
 	TextureManager::StaticTerminate();
 	SimpleDraw::StaticTerminate();
