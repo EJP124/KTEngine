@@ -20,7 +20,6 @@ void RigidBody::Initialize(KTEngine::Graphics::Transform& graphicsTransform, con
 
 	mMotionState = new btDefaultMotionState(ConvertTobtTransform(graphicsTransform));
 	mRigidBody = new btRigidBody(mass, mMotionState, shape.GetCollisionShape());
-	mRigidBody->setRestitution(0.9f);
 	PhysicsWorld::Get()->Register(this);
 }
 void RigidBody::Terminate()

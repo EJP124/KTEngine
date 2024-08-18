@@ -42,6 +42,8 @@ namespace KTEngine::Graphics
 		// Screen Quad
 		static MeshPX CrearsScreenQuad();
 
+		static Mesh CreateSpriteQuad(float width, float height);
+			
 		
 	};
 }

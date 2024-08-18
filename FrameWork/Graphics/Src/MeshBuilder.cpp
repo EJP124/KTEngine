@@ -4,7 +4,7 @@
 using namespace KTEngine;
 using namespace KTEngine::Graphics;
 
-namespace 
+namespace
 {
 	Color GetNextColor(int& index)
 	{
@@ -149,7 +149,7 @@ MeshPC MeshBuilder::CreateCubePC(float size)
 
 	int index = rand() % 100;
 	// front
-	mesh.vertices.push_back({ { -hs, -hs, -hs }, GetNextColor(index)});
+	mesh.vertices.push_back({ { -hs, -hs, -hs }, GetNextColor(index) });
 	mesh.vertices.push_back({ { -hs,  hs, -hs }, GetNextColor(index) });
 	mesh.vertices.push_back({ {  hs,  hs, -hs }, GetNextColor(index) });
 	mesh.vertices.push_back({ {  hs, -hs, -hs }, GetNextColor(index) });
@@ -239,7 +239,7 @@ Mesh MeshBuilder::CreateGroundPlane(uint32_t numRows, uint32_t numCols, float sp
 				{x, 0.0f, z},
 				{0.0f,1.0f,0.0f},
 				{0.0f,0.0f,1.0f},
-				{u,v}});
+				{u,v} });
 			x += spacing;
 			u += uInc;
 		}
@@ -570,12 +570,12 @@ Mesh MeshBuilder::CreateSphere(uint32_t slices, uint32_t rings, float radius)
 			float x = radius * sin(rotation) * sin(phi);
 			float y = radius * cos(phi);
 			float z = radius * cos(rotation) * sin(phi);
-			Math::Vector3 position = {x,y,z};
+			Math::Vector3 position = { x,y,z };
 			Math::Vector3 normal = Math::Normalize(position);
 			Math::Vector3 tangent = Math::Normalize({ -z, 0.0f, x });
 			Math::Vector2 uvCoord = { u, v };
 
-			mesh.vertices.push_back({ 
+			mesh.vertices.push_back({
 				position,
 				normal,
 				tangent,
@@ -590,7 +590,7 @@ Mesh MeshBuilder::CreateSphere(uint32_t slices, uint32_t rings, float radius)
 }
 
 MeshPX MeshBuilder::CreateSkyBoxPX(float size)
-{	
+{
 	MeshPX mesh;
 	const float hs = size * 0.5f;
 	const float q = 0.25f;
@@ -610,19 +610,19 @@ MeshPX MeshBuilder::CreateSkyBoxPX(float size)
 	mesh.vertices.push_back({ { hs, hs,-hs},{ q , 0.0f } });
 	mesh.vertices.push_back({ {-hs, hs,-hs},{ q2 , 0.0f } });
 	mesh.vertices.push_back({ {-hs, hs, hs},{ q2 , t } });
-							    
+
 	//Front					    
 	mesh.vertices.push_back({ {-hs,-hs, hs},{q2,t2} });
 	mesh.vertices.push_back({ {-hs, hs, hs},{q2,  t} });
 	mesh.vertices.push_back({ { hs, hs, hs},{q,  t} });
 	mesh.vertices.push_back({ { hs,-hs, hs},{q,t2} });
-							    
+
 	//Bottom				    
 	mesh.vertices.push_back({ { hs, -hs, hs}, {q, t2} });
 	mesh.vertices.push_back({ { hs, -hs, -hs}, {q, 1.0f} });
 	mesh.vertices.push_back({ { -hs, -hs, -hs}, {q2, 1.0f} });
 	mesh.vertices.push_back({ { -hs, -hs, hs}, {q2, t2} });
-							    
+
 	//Right					    
 	mesh.vertices.push_back({ { -hs, -hs, -hs }, { q3, t2} });
 	mesh.vertices.push_back({ { -hs, hs, -hs }, { q3, t} });
@@ -656,7 +656,7 @@ MeshPX MeshBuilder::CreateSkyBoxPX(float size)
 		22,20,23
 	};
 	return mesh;
- }
+}
 
 
 MeshPX MeshBuilder::CrearsScreenQuad()
@@ -667,6 +667,26 @@ MeshPX MeshBuilder::CrearsScreenQuad()
 	mesh.vertices.push_back({ { 1.0f, -1.0f, 0.0f},{ 1.0f, 1.0f } });
 	mesh.vertices.push_back({ { -1.0f, -1.0f, 0.0f },{ 0.0f, 1.0f } });
 	mesh.indices = { 0,1,3,1,2,3 };
+
+	return mesh;
+}
+
+Mesh MeshBuilder::CreateSpriteQuad(float width, float height)
+{
+	Mesh mesh;
+
+	const float hw = width * 0.5f;
+	const float hh = height * 0.5f;
+
+	mesh.vertices.push_back({ {-hw, -hh, 0.0f}, -Math::Vector3::ZAxis, Math::Vector3::XAxis, {0.0f, 1.0f} });
+	mesh.vertices.push_back({ {-hw,  hh, 0.0f}, -Math::Vector3::ZAxis, Math::Vector3::XAxis, {0.0f, 0.0f} });
+	mesh.vertices.push_back({ { hw,  hh, 0.0f}, -Math::Vector3::ZAxis, Math::Vector3::XAxis, {1.0f, 0.0f} });
+	mesh.vertices.push_back({ { hw, -hh, 0.0f}, -Math::Vector3::ZAxis, Math::Vector3::XAxis, {1.0f, 1.0f} });
+
+	mesh.indices = {
+		0, 1, 2,
+		0, 2, 3
+	};
 
 	return mesh;
 }
