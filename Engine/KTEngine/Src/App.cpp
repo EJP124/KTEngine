@@ -7,6 +7,7 @@ using namespace KTEngine::Core;
 using namespace KTEngine::Graphics;
 using namespace KTEngine::Input;
 using namespace KTEngine::Physics;
+using namespace KTEngine::Audio;
 
 void App::ChangeState(const std::string& stateName)
 {
@@ -36,6 +37,8 @@ void App::Run(const AppConfig& config)
 	SimpleDraw::StaticInitialize(config.maxVertexCount);
 	TextureManager::StaticInitialize("../../Assets/Textures");
 	ModelManager::StaticInitialize();
+	AudioSystem::StaticInitialize();
+	SoundEffectManager::StaticInitialize("../../Assets/Sounds");
 
 	PhysicsWorld::Settings settings;
 	PhysicsWorld::StaticInitialize(settings);
@@ -63,6 +66,9 @@ void App::Run(const AppConfig& config)
 			mCurrentState = std::exchange(mNextState, nullptr);
 			mCurrentState->Initialize();
 		}
+
+		AudioSystem::Get()->Update();
+
 		float deltaTime = TimeUtil::GetDeltaTime();
 		if (deltaTime < 0.5f)
 		{
@@ -80,6 +86,8 @@ void App::Run(const AppConfig& config)
 
 	mCurrentState->Terminate();
 
+	SoundEffectManager::StaticTerminate();
+	AudioSystem::StaticTerminate();
 	PhysicsWorld::StaticTerminate();
 	ModelManager::StaticTerminate();
 	TextureManager::StaticTerminate();
