@@ -83,7 +83,7 @@ namespace KTEngine::Physics
 		//particle system info
 		ParticleSystemInfo mInfo;
 		int mNextAvailableParticleIndex;
-		float mNextSpawTime = 0.0f;
+		float mNextSpawnTime = 0.0f;
 		float mLifeTime = 0.0f;
 	};
 }

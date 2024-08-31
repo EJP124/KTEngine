@@ -15,66 +15,68 @@ void GameState::Initialize()
 	mDirectionalLight.diffuse = { 0.8f, 0.8f, 0.8f, 0.1f };
 	mDirectionalLight.specular = { 1.0f, 1.0f, 1.0f, 1.0f };
 
-	std::filesystem::path shaderFilePath = (L"../../Assets/Shaders/Standard.fx");
-	mStandardEffect.Initialize(shaderFilePath);
-	mStandardEffect.SetCamera(mCamera);
-	mStandardEffect.SetDirectionalLight(mDirectionalLight);
+	mParticleEffect.Initialize();
+	mParticleEffect.SetCamera(mCamera);
 
-	Mesh mesh = MeshBuilder::CreateSphere(30, 30, 1.0f);
-	mParticleRenderObj.meshBuffer.Initialize(mesh);
-	mParticle.Initialize();
+	ParticleSystemInfo info;
+	info.maxParticles = 100;
+	info.particleTextureId = TextureManager::Get()->LoadTexture("Images/pikachu.png");
+	info.spawnPosition = Math::Vector3::Zero;
+	info.spawnDirection = Math::Vector3::YAxis;
+	info.spawnDelay = 0.0f;
+	info.spawnLifeTime = 99999999999999.0f;
+	info.minParticlePerEmit = 3;
+	info.maxParticlePerEmit = 5;
+	info.minTimeBetweenEmit = 0.05f;
+	info.maxTimeBetweenEmit = 0.1f;
+	info.minSpawnAngle = -30.0f * Math::Constants::Pi / 180.0f;
+	info.maxSpawnAngle = 30.0f * Math::Constants::Pi / 180.0f;
+	info.minSpeed = 2.0f;
+	info.maxSpeed = 5.0f;
+	info.minParticleLifeTime = 0.5f;
+	info.maxParticleLifeTime = 1.0f;
+	info.minStartColor = Colors::Red;
+	info.maxStartColor = Colors::Yellow;
+	info.minEndColor = Colors::White;
+	info.maxEndColor = Colors::Orange;
+	info.minStartScale = Math::Vector3::One;
+	info.maxStartScale = { 1.5f, 1.5f, 1.5f };
+	info.minEndScale = { 0.05f, 0.05f, 0.05f };
+	info.maxEndScale = { 0.1f, 0.1f, 0.1 };
+	mParticleSystem.Initialize(info);
+	mParticleSystem.SetCamera(mCamera);
 }
 
 void GameState::Terminate()
 {
-	mParticle.Terminate();
-	mParticleRenderObj.Terminate();
-	mStandardEffect.Terminate();
+	mParticleSystem.Terminate();
+	mParticleEffect.Terminate();
 }
 
 void GameState::Update(float deltaTime)
 {
 	UpdateCameraControl(deltaTime);
-	
-
+	mParticleSystem.Update(deltaTime);
 }
 
 void GameState::Render()
 {
 	SimpleDraw::AddGroundPlane(20.0f, Colors::White);
 	SimpleDraw::Render(mCamera);
-	mStandardEffect.Begin();
-		if (mParticle.IsActive())
-		{
-			Physics::CurrentParticleInfo info;
-			mParticle.ObtainCurrentInfo(info);
-			mParticleRenderObj.transform = info.transform;
-			mParticleRenderObj.transform.scale = info.transform.scale;
-			mParticleRenderObj.material.ambient = info.color;
-			mParticleRenderObj.material.diffuse = info.color;
-			mParticleRenderObj.material.specular = info.color;
-			mParticleRenderObj.material.emissive = info.color;
-			mStandardEffect.Render(mParticleRenderObj);
-		}
-	mStandardEffect.End();
+	mParticleEffect.Begin();
+		mParticleSystem.Render(mParticleEffect);
+	mParticleEffect.End();
+	
 }
 void GameState::DebugUI()
 {
 	ImGui::Begin("Debug Controls", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
-	if (ImGui::CollapsingHeader("Light", ImGuiTreeNodeFlags_DefaultOpen))
-	{
-		if (ImGui::DragFloat3("Direction", &mDirectionalLight.direction.x, 0.01f))
-		{
-			mDirectionalLight.direction = Math::Normalize(mDirectionalLight.direction);
-		}
-		ImGui::ColorEdit4("Ambient##Light", &mDirectionalLight.ambient.r);
-		ImGui::ColorEdit4("Diffuse##Light", &mDirectionalLight.diffuse.r);
-		ImGui::ColorEdit4("Specular##Light", &mDirectionalLight.specular.r);
-	}
-	mStandardEffect.DebugUI();
-	Physics::PhysicsWorld::Get()->DebugUI();
+		mParticleEffect.DebugUI();
+		mParticleSystem.DebugUI();
+		Physics::PhysicsWorld::Get()->DebugUI();
 	ImGui::End();
 
+	SimpleDraw::Render(mCamera);
 }
 
 void GameState::UpdateCameraControl(float deltaTime)
@@ -113,17 +115,5 @@ void GameState::UpdateCameraControl(float deltaTime)
 		mCamera.Pitch(input->GetMouseMoveY() * turnSpeed * deltaTime);
 	}
 
-	if (input->IsKeyPressed(KeyCode::SPACE))
-	{
-		Physics::ParticleActivateData data;
-		data.startColor = Colors::Red;
-		data.endColor = Colors::Yellow;
-		data.startScale = { 0.5f, 0.5f, 0.5f };
-		data.endScale = { 0.1f, 0.1f, 0.1f };
-		data.lifeTime = 3.0f;
-		data.position = Vector3::Zero;
-		data.velocity = { 2.0f, 10.0f, 0.0f };
-		mParticle.Activate(data);
-	}
-	mParticle.Update(deltaTime);
+	
 }

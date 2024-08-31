@@ -1,8 +1,6 @@
 #pragma once
-#include <KTEngine/Inc/KTEngine.h>
 
-using namespace KTEngine;
-using namespace KTEngine::Graphics;
+#include <KTEngine/Inc/KTEngine.h>
 
 class GameState : public KTEngine::AppState
 {
@@ -17,8 +15,6 @@ public:
 protected:
 	KTEngine::Graphics::DirectionalLight mDirectionalLight;
 	KTEngine::Graphics::Camera mCamera;
-	KTEngine::Graphics::StandardEffect mStandardEffect;
-
-	KTEngine::Graphics::RenderObject mParticleRenderObj;
-	KTEngine::Physics::Particle mParticle;
+	KTEngine::Graphics::ParticleSystemEffect mParticleEffect;
+	KTEngine::Physics::ParticleSystem mParticleSystem;
 };

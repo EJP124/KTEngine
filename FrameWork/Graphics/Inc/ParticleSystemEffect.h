@@ -12,7 +12,7 @@
 namespace KTEngine::Graphics
 {
 	class Camera;
-	class RenderObject;
+	struct RenderObject;
 
 	class ParticleSystemEffect
 	{
@@ -28,6 +28,7 @@ namespace KTEngine::Graphics
 
 		void DebugUI();
 		void SetCamera(const Camera& camera);
+
 	private:
 		struct ParticleData
 		{
