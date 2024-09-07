@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "App.h"
 #include "AppState.h"
+#include "EventManager.h"
 
 using namespace KTEngine;
 using namespace KTEngine::Core;
@@ -39,6 +40,7 @@ void App::Run(const AppConfig& config)
 	ModelManager::StaticInitialize();
 	AudioSystem::StaticInitialize();
 	SoundEffectManager::StaticInitialize("../../Assets/Sounds");
+	EventManager::StaticInitialize();
 
 	PhysicsWorld::Settings settings;
 	PhysicsWorld::StaticInitialize(settings);
@@ -86,6 +88,7 @@ void App::Run(const AppConfig& config)
 
 	mCurrentState->Terminate();
 
+	EventManager::StaticTerminate();
 	SoundEffectManager::StaticTerminate();
 	AudioSystem::StaticTerminate();
 	PhysicsWorld::StaticTerminate();

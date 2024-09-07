@@ -10,6 +10,9 @@ namespace KTEngine::Graphics
 	public: 
 		Transform GetTransform(float time) const;
 		float GetDuration() const;
+
+		void PlayEvents(float prevTime, float curTime);
+
 	private:
 		const Math::Vector3& GetPosition(float time) const;
 		const Math::Quaternion& GetRotation(float time) const;
@@ -21,6 +24,7 @@ namespace KTEngine::Graphics
 		PositionKeys mPositionKeys;
 		RotationKeys mRotationKeys;
 		ScaleKeys mScaleKeys;
+		EventKeys mEventKeys;
 		float mDuration;
 	};
 }

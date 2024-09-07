@@ -80,6 +80,7 @@ void SoundEffectManager::Play(SoundId id, bool loop)
 	auto iter = mInventory.find(id);
 	if (iter != mInventory.end())
 	{
+		iter->second->instance->Stop(loop);
 		iter->second->instance->Play(loop);
 	}
 }

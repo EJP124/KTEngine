@@ -5,6 +5,8 @@ using namespace KTEngine::Graphics;
 using namespace KTEngine::Input;
 using namespace KTEngine::Audio;
 
+
+
 void GameState::Initialize()
 {
 	mCamera.SetPosition({ 0.0f, 1.0f, -3.0f });
@@ -25,7 +27,26 @@ void GameState::Initialize()
 	mStandardEffect.SetCamera(mCamera);
 	mStandardEffect.SetDirectionalLight(mDirectionalLight);
 
-	mSoundId = SoundEffectManager::Get()->Load("megamanx_title.wav");
+	SoundEffectManager* sem = SoundEffectManager::Get();
+	mSoundEventIds.push_back(sem->Load("megamanx_blast.wav"));
+	mSoundEventIds.push_back(sem->Load("photongun1.wav"));
+	mSoundEventIds.push_back(sem->Load("explosion.wav"));
+
+	AnimationCallback cb = [&]() {SoundEffectManager::Get()->Play(mSoundEventIds[0]); };
+	mEventAnimationTime = 0.0f;
+	mEventAnimation = AnimationBuilder()
+		.AddPositionKey({ 0.0f, 0.0f, 0.0f }, 0.0f)
+		.AddPositionKey({ 3.0f, 0.0f, 0.0f }, 2.0f)
+		.AddPositionKey({ 0.0f, 0.0f, 0.0f }, 3.0f)
+		.AddEventKey(cb, 1.0f)
+		.AddEventKey(std::bind(&GameState::OnEvent2,this), 2.0f)
+		.AddEventKey(std::bind(&GameState::OnEvent3, this), 3.0f)
+		.Build();
+
+	EventManager* em = EventManager::Get();
+	mSpaceEventId = em->AddListener(EventType::SpacePressed, std::bind(&GameState::OnSpaceEvent, this, std::placeholders::_1));
+	mAnimEventId = em->AddListener(EventType::AnimEvent, std::bind(&GameState::OnAnimEvent, this, std::placeholders::_1));
+
 }
 
 void GameState::Terminate()
@@ -39,13 +60,23 @@ void GameState::Update(float deltaTime)
 	mCharacterAnimator.Update(deltaTime);
 	UpdateCameraControl(deltaTime);
 
+	float prevTime = mEventAnimationTime;
+	mEventAnimationTime += deltaTime;
+	mEventAnimation.PlayEvents(prevTime, mEventAnimationTime);
+	while (mEventAnimationTime >= mEventAnimation.GetDuration())
+	{
+		mEventAnimationTime -= mEventAnimation.GetDuration();
+	}
 }
 
 void GameState::Render()
 {
+	for (auto& ro : mCharacter)
+	{
+		ro.transform = mEventAnimation.GetTransform(mEventAnimationTime);
+	}
 	if (mDrawSkeleton)
 	{
-		
 		AnimationUtil::BoneTransforms bonTransforms;
 		AnimationUtil::ComputeBoneTransforms(mModelId, bonTransforms, &mCharacterAnimator);
 		AnimationUtil::DrawSkeleton(mModelId, bonTransforms);
@@ -55,10 +86,10 @@ void GameState::Render()
 	if (!mDrawSkeleton)
 	{
 		mStandardEffect.Begin();
-			DrawRenderGroup(mStandardEffect, mCharacter);
+		DrawRenderGroup(mStandardEffect, mCharacter);
 		mStandardEffect.End();
 	}
-	
+
 }
 void GameState::DebugUI()
 {
@@ -117,10 +148,51 @@ void GameState::UpdateCameraControl(float deltaTime)
 		mCamera.Yaw(input->GetMouseMoveX() * turnSpeed * deltaTime);
 		mCamera.Pitch(input->GetMouseMoveY() * turnSpeed * deltaTime);
 	}
+
+	//if character1 and character1 overlap
+	// ContactEvent contactEvent;
+	//	contactEvent.objA = character1
+	//	contactEvent.objB = character2
+	//EventManger::Broadcast(contactEvent)
 	if (input->IsKeyPressed(KeyCode::SPACE))
 	{
-		SoundEffectManager::Get()->Stop(mSoundId);
-		SoundEffectManager::Get()->Play(mSoundId);
+		SpacePressedEvent spacePressed;
+		EventManager::Broadcast(&spacePressed);
 	}
-	
 }
+
+void GameState::OnEvent2()
+{
+	SoundEffectManager::Get()->Play(mSoundEventIds[1]);
+	AnimEvent animEvent;
+	animEvent.eventName = "Shoot";
+	EventManager::Broadcast(&animEvent);
+}
+
+void GameState::OnEvent3()
+{
+	SoundEffectManager::Get()->Play(mSoundEventIds[2]);
+	AnimEvent animEvent;
+	animEvent.eventName = "Explode";
+	EventManager::Broadcast(&animEvent);
+}
+
+
+void GameState::OnSpaceEvent(const KTEngine::Event* event)
+{
+	LOG("SPACE EVENT OCCURED");
+	SoundEffectManager::Get()->Play(mSoundEventIds[2]);
+}
+void GameState::OnAnimEvent(const KTEngine::Event* event)
+{
+	AnimEvent* eventData = (AnimEvent*)event;
+	if (eventData->eventName == "Shoot")
+	{
+		LOG("SHOOT EVENT OCCURED");
+	}
+	else if (eventData->eventName == "Explode")
+	{
+		LOG("EXPLODE EVENT OCCURED");
+	}
+}
+

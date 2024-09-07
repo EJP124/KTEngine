@@ -15,6 +15,12 @@ public:
 	void UpdateCameraControl(float deltaTime);
 
 protected:
+	void OnEvent2();
+	void OnEvent3();
+
+	void OnSpaceEvent(const KTEngine::Event* event);
+	void OnAnimEvent(const KTEngine::Event* event);
+
 	KTEngine::Graphics::DirectionalLight mDirectionalLight;
 	KTEngine::Graphics::Camera mCamera;
 
@@ -23,8 +29,12 @@ protected:
 	KTEngine::Graphics::Animator mCharacterAnimator;
 	KTEngine::Graphics::StandardEffect mStandardEffect;
 
-	KTEngine::Audio::SoundId mSoundId = 0;
+	KTEngine::ListenerId mSpaceEventId = 0;
+	KTEngine::ListenerId mAnimEventId = 0;
 
+	std::vector<KTEngine::Audio::SoundId> mSoundEventIds;
+	KTEngine::Graphics::Animation mEventAnimation;
+	float mEventAnimationTime = 0.0f;
 
 	int mAnimIndex = -1;
 	bool mDrawSkeleton = false;
