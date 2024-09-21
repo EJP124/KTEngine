@@ -120,6 +120,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Audio", "FrameWork\Audio\Au
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "22_HelloSoundEvents", "VGP334\22_HelloSoundEvents\22_HelloSoundEvents.vcxproj", "{7B0A1357-C61C-4C5D-B8DA-8A91DA83DD46}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Final_Animation", "VGP334\Final_Animation\Final_Animation.vcxproj", "{36F6707D-7802-4C29-B006-B7BB6CE86939}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -416,6 +418,14 @@ Global
 		{7B0A1357-C61C-4C5D-B8DA-8A91DA83DD46}.Release|x64.Build.0 = Release|x64
 		{7B0A1357-C61C-4C5D-B8DA-8A91DA83DD46}.Release|x86.ActiveCfg = Release|Win32
 		{7B0A1357-C61C-4C5D-B8DA-8A91DA83DD46}.Release|x86.Build.0 = Release|Win32
+		{36F6707D-7802-4C29-B006-B7BB6CE86939}.Debug|x64.ActiveCfg = Debug|x64
+		{36F6707D-7802-4C29-B006-B7BB6CE86939}.Debug|x64.Build.0 = Debug|x64
+		{36F6707D-7802-4C29-B006-B7BB6CE86939}.Debug|x86.ActiveCfg = Debug|Win32
+		{36F6707D-7802-4C29-B006-B7BB6CE86939}.Debug|x86.Build.0 = Debug|Win32
+		{36F6707D-7802-4C29-B006-B7BB6CE86939}.Release|x64.ActiveCfg = Release|x64
+		{36F6707D-7802-4C29-B006-B7BB6CE86939}.Release|x64.Build.0 = Release|x64
+		{36F6707D-7802-4C29-B006-B7BB6CE86939}.Release|x86.ActiveCfg = Release|Win32
+		{36F6707D-7802-4C29-B006-B7BB6CE86939}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -459,6 +469,7 @@ Global
 		{4F150A30-CECB-49D1-8283-6A3F57438CF5} = {DB27359A-0C22-40EA-A245-6E55D2489E5D}
 		{BAAC9AFB-B695-4C72-935D-DC52D14E1B37} = {27FE03D3-7CD7-4AE2-8422-13123647D5F7}
 		{7B0A1357-C61C-4C5D-B8DA-8A91DA83DD46} = {BDF80A18-5469-45AB-91B6-2B804F5416F9}
+		{36F6707D-7802-4C29-B006-B7BB6CE86939} = {BDF80A18-5469-45AB-91B6-2B804F5416F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2B429F6-D445-4022-B927-3B503F632F7A}

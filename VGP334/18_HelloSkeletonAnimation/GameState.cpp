@@ -42,7 +42,6 @@ void GameState::Render()
 {
 	if (mDrawSkeleton)
 	{
-		
 		AnimationUtil::BoneTransforms bonTransforms;
 		AnimationUtil::ComputeBoneTransforms(mModelId, bonTransforms, &mCharacterAnimator);
 		AnimationUtil::DrawSkeleton(mModelId, bonTransforms);
