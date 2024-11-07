@@ -9,7 +9,7 @@ void RenderObject::Terminate()
 {
 	meshBuffer.Terminate();
 }
-RenderGroup Graphics::CreateRenderGroup(ModelId& id, const Animator* animator)
+RenderGroup Graphics::CreateRenderGroup(ModelId id, const Animator* animator)
 {
 	const Model* model = ModelManager::Get()->GetModel(id);
 	return CreateRenderGroup(*model, id, animator);
