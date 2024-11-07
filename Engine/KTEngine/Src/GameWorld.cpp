@@ -197,6 +197,7 @@ GameObject* GameWorld::CreateGameObject(std::string name, const std::filesystem:
 		ASSERT(false, "GameWorld: no free slots available");
 		return nullptr;
 	}
+
 	const uint32_t freeSlot = mFreeSlots.back();
 	mFreeSlots.pop_back();
 

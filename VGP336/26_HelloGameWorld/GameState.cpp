@@ -7,12 +7,7 @@ using namespace KTEngine::Audio;
 
 void GameState::Initialize()
 {
-	mGameWorld.AddService<CameraService>();
-	mGameWorld.AddService<RenderService>();
-	mGameWorld.Initialize();
-
-	mGameWorld.CreateGameObject("Object0", "../../Assets/Templates/test_object.json", true);
-	mGameWorld.CreateGameObject("Camera", "../../Assets/Templates/fps_camera.json", true);
+	mGameWorld.LoadLevel(L"../../Assets/Templates/test_level.json");
 }
 
 void GameState::Terminate()
