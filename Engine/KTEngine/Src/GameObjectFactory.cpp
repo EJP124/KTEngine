@@ -2,10 +2,12 @@
 #include "GameObjectFactory.h"
 #include "GameObject.h"
 #include "Component.h"
+#include "AnimatorComponent.h"
 #include "CameraComponent.h"
 #include "FPSCameraComponent.h"
 #include "TransformComponent.h"
 #include "MeshComponent.h"
+#include "ModelComponent.h"
 
 using namespace KTEngine;
 
@@ -30,6 +32,14 @@ namespace
 		{
 			newComponent = gameObject.AddComponent<MeshComponent>();
 		}
+		else if (componentName == "AnimatorComponent")
+		{
+			newComponent = gameObject.AddComponent<AnimatorComponent>();
+		}
+		else if (componentName == "ModelComponent")
+		{
+			newComponent = gameObject.AddComponent<ModelComponent>();
+		}
 		else
 		{
 			ASSERT(false, "GameObjectFactory: unrecognized component %s", componentName.c_str());
@@ -37,7 +47,6 @@ namespace
 
 		return newComponent;
 	}
-
 	Component* GetComponent(const std::string& componentName, GameObject& gameObject)
 	{
 		Component* newComponent = nullptr;
@@ -57,6 +66,14 @@ namespace
 		{
 			newComponent = gameObject.GetComponent<MeshComponent>();
 		}
+		else if (componentName == "AnimatorComponent")
+		{
+			newComponent = gameObject.GetComponent<AnimatorComponent>();
+		}
+		else if (componentName == "ModelComponent")
+		{
+			newComponent = gameObject.GetComponent<ModelComponent>();
+		}
 		else
 		{
 			ASSERT(false, "GameObjectFactory: unrecognized component %s", componentName.c_str());
@@ -72,7 +89,6 @@ void GameObjectFactory::Make(const std::filesystem::path& templatePath, GameObje
 	auto err = fopen_s(&file, templatePath.u8string().c_str(), "r");
 	ASSERT(err = 0, "GameObjectFactory: failed to open file %s", templatePath.u8string().c_str());
 
-	
 	char readBuffer[65536];
 	rapidjson::FileReadStream readStream(file, readBuffer, sizeof(readBuffer));
 	fclose(file);
@@ -89,7 +105,6 @@ void GameObjectFactory::Make(const std::filesystem::path& templatePath, GameObje
 		}
 	}
 }
-
 void GameObjectFactory::OverrideDeserialize(const rapidjson::Value& value, GameObject& gameObject)
 {
 	if (value.HasMember("Components"))
@@ -104,5 +119,4 @@ void GameObjectFactory::OverrideDeserialize(const rapidjson::Value& value, GameO
 			}
 		}
 	}
-	
 }

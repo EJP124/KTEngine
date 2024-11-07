@@ -16,6 +16,9 @@
     <Filter Include="Src\Component">
       <UniqueIdentifier>{08406768-8019-4ff8-b55e-4711ded1c837}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Service">
+      <UniqueIdentifier>{982e81c0-95ef-4dbc-9428-c52c21cf35f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\KTEngine.h">
@@ -37,9 +40,6 @@
       <Filter>Inc</Filter>
     </ClInclude>
     <ClInclude Include="Inc\EventManager.h">
-      <Filter>Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\GameObject.h">
       <Filter>Inc</Filter>
     </ClInclude>
     <ClInclude Include="Inc\TypeIds.h">
@@ -84,6 +84,18 @@
     <ClInclude Include="Inc\GameObjectHandle.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\RigidBodyComponent.h">
+      <Filter>Inc\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\AnimatorComponent.h">
+      <Filter>Inc\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ModelComponent.h">
+      <Filter>Inc\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\GameObject.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiled.cpp">
@@ -101,19 +113,10 @@
     <ClCompile Include="Src\GameObject.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClCompile Include="Src\CameraService.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
     <ClCompile Include="Src\GameWorld.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClCompile Include="Src\GameObjectFactory.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
     <ClCompile Include="Src\SaveUtil.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\RenderService.cpp">
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\CameraComponent.cpp">
@@ -130,6 +133,24 @@
     </ClCompile>
     <ClCompile Include="Src\MeshComponent.cpp">
       <Filter>Src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\RigidBodyComponent.cpp">
+      <Filter>Src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\RenderService.cpp">
+      <Filter>Src\Service</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\CameraService.cpp">
+      <Filter>Src\Service</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\AnimatorComponent.cpp">
+      <Filter>Src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ModelComponent.cpp">
+      <Filter>Src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameObjectFactory.cpp">
+      <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

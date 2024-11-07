@@ -4,6 +4,7 @@
 #include "CameraService.h"
 #include "RenderObjectComponent.h"
 #include "TransformComponent.h"
+#include "AnimatorComponent.h"
 
 #include "GameWorld.h"
 
@@ -71,20 +72,23 @@ void RenderService::Render()
 
 void RenderService::DebugUI()
 {
-	ImGui::Text("FPS: %f", mFPS);
-	if (ImGui::CollapsingHeader("Light", ImGuiTreeNodeFlags_DefaultOpen))
+	if (ImGui::CollapsingHeader("Rendering"))
 	{
-		if (ImGui::DragFloat3("Direction", &mDirectionalLight.direction.x, 0.01f))
+		ImGui::Text("FPS: %f", mFPS);
+		if (ImGui::CollapsingHeader("Light", ImGuiTreeNodeFlags_DefaultOpen))
 		{
-			mDirectionalLight.direction = Normalize(mDirectionalLight.direction);
-		}
+			if (ImGui::DragFloat3("Direction", &mDirectionalLight.direction.x, 0.01f))
+			{
+				mDirectionalLight.direction = Normalize(mDirectionalLight.direction);
+			}
 
-		ImGui::ColorEdit4("Ambient##Light", &mDirectionalLight.ambient.r);
-		ImGui::ColorEdit4("Diffuse##Light", &mDirectionalLight.diffuse.r);
-		ImGui::ColorEdit4("Specular##Light", &mDirectionalLight.specular.r);
+			ImGui::ColorEdit4("Ambient##Light", &mDirectionalLight.ambient.r);
+			ImGui::ColorEdit4("Diffuse##Light", &mDirectionalLight.diffuse.r);
+			ImGui::ColorEdit4("Specular##Light", &mDirectionalLight.specular.r);
+		}
+		mStandardEffect.DebugUI();
+		mShadowEffect.DebugUI();
 	}
-	mStandardEffect.DebugUI();
-	mShadowEffect.DebugUI();
 }
 
 void RenderService::Register(const RenderObjectComponent* renderObjectComponent)
@@ -94,9 +98,16 @@ void RenderService::Register(const RenderObjectComponent* renderObjectComponent)
 	entry.renderComponent = renderObjectComponent;
 	entry.transformComponent = renderObjectComponent->GetOwner().GetComponent<TransformComponent>();
 
+	const AnimatorComponent* animatorComponent = renderObjectComponent->GetOwner().GetComponent<AnimatorComponent>();
+	const Animator* animator = nullptr;
+	if (animatorComponent != nullptr)
+	{
+		animator = &animatorComponent->GetAnimator();
+	}
+
 	if (renderObjectComponent->GetModelId() > 0)
 	{
-		entry.renderGroup = CreateRenderGroup(renderObjectComponent->GetModelId());
+		entry.renderGroup = CreateRenderGroup(renderObjectComponent->GetModelId(), animator);
 	}
 	else
 	{
