@@ -12,30 +12,30 @@
         "Rings": 60,
         "Radius": 1.0
       },
-    "Material": {
-      "Ambient": [ 0.5, 0.5, 0.5, 1.0 ],
-      "Diffuse": [ 0.8, 0.8, 0.8, 1.0 ],
-      "Specular": [ 0.9, 0.9, 0.9, 1.0 ],
-      "Emissive": [ 0.0, 0.0, 0.0, 1.0 ],
-      "SpecularPower": 10.0
-    },
-    "Textures": {
-      "DiffuseMap": "../../Assets/Textures/earth/earth.jpg",
-      "NormalMap": "../../Assets/Textures/earth/earth_normal.jpg",
-      "SpecMap": "../../Assets/Textures/earth/earth_spec.jpg"
-      "BumpMap": "../../Assets/Textures/earth/earth_bump.jpg",
-    },
-      "RigidBodyComponent": {
-        "Mass": 10.0,
-        "ColliderData": {
-          "Shape": "Sphere",
-          "Radius": 1.0
-        }
+      "Material": {
+        "Ambient": [ 0.5, 0.5, 0.5, 1.0 ],
+        "Diffuse": [ 0.8, 0.8, 0.8, 1.0 ],
+        "Specular": [ 0.9, 0.9, 0.9, 1.0 ],
+        "Emissive": [ 0.0, 0.0, 0.0, 1.0 ],
+        "SpecularPower": 10.0
       },
-      "SoundEffectComponent": {
-        "FileName": "../../Assets/Sounds/explosion.wav",
-        "Looping":  false
+      "Textures": {
+        "DiffuseMap": "../../Assets/Textures/earth/earth.jpg",
+        "NormalMap": "../../Assets/Textures/earth/earth_normal.jpg",
+        "SpecMap": "../../Assets/Textures/earth/earth_spec.jpg",
+        "BumpMap": "../../Assets/Textures/earth/earth_bump.jpg"
       }
+    },
+    "RigidBodyComponent": {
+      "Mass": 10.0,
+      "ColliderData": {
+        "Shape": "Sphere",
+        "Radius": 1.0
+      }
+    },
+    "SoundEffectComponent": {
+      "FileName": "../../Assets/Sounds/explosion.wav",
+      "Looping": false
     }
   }
 }
