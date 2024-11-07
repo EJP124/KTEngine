@@ -20,11 +20,17 @@ void RigidBody::Initialize(KTEngine::Graphics::Transform& graphicsTransform, con
 
 	mMotionState = new btDefaultMotionState(ConvertTobtTransform(graphicsTransform));
 	mRigidBody = new btRigidBody(mass, mMotionState, shape.GetCollisionShape());
+
+#ifndef USE_PHYSICS_SERVICE
 	PhysicsWorld::Get()->Register(this);
+#endif
 }
+
 void RigidBody::Terminate()
 {
+#ifndef USE_PHYSICS_SERVICE
 	PhysicsWorld::Get()->Unregister(this);
+#endif
 	SafeDelete(mRigidBody);
 	SafeDelete(mMotionState);
 	mGraphicsTransform = nullptr;
@@ -39,8 +45,10 @@ void RigidBody::SetPosition(const KTEngine::Math::Vector3& position)
 	mGraphicsTransform->position = position;
 	mRigidBody->setWorldTransform(ConvertTobtTransform(*mGraphicsTransform));
 }
+
 void RigidBody::SetVelocity(const KTEngine::Math::Vector3& velocity)
 {
+	mRigidBody->activate();
 	mRigidBody->setLinearVelocity(ConvertTobtVector3(velocity));
 }
 

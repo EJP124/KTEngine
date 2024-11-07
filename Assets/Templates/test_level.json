@@ -6,6 +6,11 @@
     },
     "RenderService": {
 
+    },
+    "PhysicsService": {
+      "Gravity": [ 0.0, -9.81, 0.0 ],
+      "SimSteps": 10,
+      "FixedTimeStep":  0.01666666666667
     }
   },
   "GameObjects": {
@@ -22,22 +27,15 @@
       "Template": "../../Assets/Templates/test_object.json",
       "Components": {
         "TransformComponent": {
-          "Position": [ 2.0, 0.0, 0.0 ]
+          "Position": [ 2.0, 10.0, 0.0 ]
         }
       }
     },
     "Object1": {
-      "Template": "../../Assets/Templates/test_object.json",
+      "Template": "../../Assets/Templates/test_model.json",
       "Components": {
         "TransformComponent": {
-          "Position": [ -2.0, 0.0, 0.0 ]
-        },
-        "MeshComponent": {
-          "Material": {
-            "Ambient": [ 1.0, 0.0, 0.0, 1.0 ],
-            "Diffuse": [ 1.0, 0.0, 0.0, 1.0 ],
-            "Specular": [ 1.0, 0.0, 0.0, 1.0 ]
-          }
+          "Position": [ 0.0, 0.0, 0.0 ]
         }
       }
     }

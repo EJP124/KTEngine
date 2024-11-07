@@ -10,7 +10,10 @@ namespace KTEngine
 		FPSCamera,   // Functionality for a camera to move
 		Mesh,        //Create a mesh render object
 		Model,		 //creates a model render object
-		Animator,	 // manages and controls animations
+		Animator,	// manages and controls animations
+		RigidBody,  //physics object that gets added to the physics world
+		SoundEffect, //adds a single sound effect to an object
+		SoundBank,   //adds an array of sound effects to an object
 		Count
 	};
 
@@ -19,6 +22,7 @@ namespace KTEngine
 		Invalid,
 		Camera,
 		Render,
+		Physics,
 		Count
 	};
 }

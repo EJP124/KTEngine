@@ -22,10 +22,20 @@
     "Textures": {
       "DiffuseMap": "../../Assets/Textures/earth/earth.jpg",
       "NormalMap": "../../Assets/Textures/earth/earth_normal.jpg",
-      "BumpMap": "../../Assets/Textures/earth/earth_bump.jpg",
       "SpecMap": "../../Assets/Textures/earth/earth_spec.jpg"
+      "BumpMap": "../../Assets/Textures/earth/earth_bump.jpg",
     },
-    "CastShadow": false
+      "RigidBodyComponent": {
+        "Mass": 10.0,
+        "ColliderData": {
+          "Shape": "Sphere",
+          "Radius": 1.0
+        }
+      },
+      "SoundEffectComponent": {
+        "FileName": "../../Assets/Sounds/explosion.wav",
+        "Looping":  false
+      }
     }
   }
 }

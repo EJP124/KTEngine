@@ -8,6 +8,9 @@
 #include "TransformComponent.h"
 #include "MeshComponent.h"
 #include "ModelComponent.h"
+#include "RigidBodyComponent.h"
+#include "SoundBankComponent.h"
+#include "SoundEffectComponent.h"
 
 using namespace KTEngine;
 
@@ -39,6 +42,18 @@ namespace
 		else if (componentName == "ModelComponent")
 		{
 			newComponent = gameObject.AddComponent<ModelComponent>();
+		}
+		else if (componentName == "RigidBodyComponent")
+		{
+			newComponent = gameObject.AddComponent<RigidBodyComponent>();
+		}
+		else if (componentName == "SoundBankComponent")
+		{
+			newComponent = gameObject.AddComponent<SoundBankComponent>();
+		}
+		else if (componentName == "SoundEffectComponent")
+		{
+			newComponent = gameObject.AddComponent<SoundEffectComponent>();
 		}
 		else
 		{
@@ -73,6 +88,18 @@ namespace
 		else if (componentName == "ModelComponent")
 		{
 			newComponent = gameObject.GetComponent<ModelComponent>();
+		}
+		else if (componentName == "RigidBodyComponent")
+		{
+			newComponent = gameObject.GetComponent<RigidBodyComponent>();
+		}
+		else if (componentName == "SoundBankComponent")
+		{
+			newComponent = gameObject.GetComponent<SoundBankComponent>();
+		}
+		else if (componentName == "SoundEffectComponent")
+		{
+			newComponent = gameObject.GetComponent<SoundEffectComponent>();
 		}
 		else
 		{
