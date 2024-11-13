@@ -140,6 +140,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "25_HelloGameObjectFactory",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "26_HelloGameWorld", "VGP336\26_HelloGameWorld\26_HelloGameWorld.vcxproj", "{CFC11A3E-1324-4718-9969-267E6D55FA34}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Levels", "Levels", "{D16A857B-7A41-4257-AB8E-1EF49E4A43AE}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Templates\test_level.json = Assets\Templates\test_level.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -525,6 +530,7 @@ Global
 		{273A476C-CB08-4126-BE72-9D3C7D74CA94} = {614F41C5-BEBB-48ED-B559-0EEE3AF57B07}
 		{93C01768-E2F6-4E7D-A3B0-F02D1F792DB1} = {92BBDC22-E0DA-449D-8D78-DC69ACD1FD35}
 		{CFC11A3E-1324-4718-9969-267E6D55FA34} = {92BBDC22-E0DA-449D-8D78-DC69ACD1FD35}
+		{D16A857B-7A41-4257-AB8E-1EF49E4A43AE} = {273A476C-CB08-4126-BE72-9D3C7D74CA94}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2B429F6-D445-4022-B927-3B503F632F7A}

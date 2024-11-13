@@ -16,6 +16,9 @@ using namespace KTEngine;
 
 namespace
 {
+	CustomMake TryMake;
+	CustomGet TryGet;
+
 	Component* AddComponent(const std::string& componentName, GameObject& gameObject)
 	{
 		Component* newComponent = nullptr;
@@ -57,6 +60,7 @@ namespace
 		}
 		else
 		{
+			newComponent = TryMake(componentName, gameObject);
 			ASSERT(false, "GameObjectFactory: unrecognized component %s", componentName.c_str());
 		}
 
@@ -103,11 +107,22 @@ namespace
 		}
 		else
 		{
+			newComponent = TryGet(componentName, gameObject);
 			ASSERT(false, "GameObjectFactory: unrecognized component %s", componentName.c_str());
 		}
 
 		return newComponent;
 	}
+}
+
+void GameObjectFactory::SetCustomMake(CustomMake customMake)
+{
+	TryMake = customMake;
+}
+
+void GameObjectFactory::SetCustomGet(CustomGet customGet)
+{
+	TryGet = customGet;
 }
 
 void GameObjectFactory::Make(const std::filesystem::path& templatePath, GameObject& gameObject)

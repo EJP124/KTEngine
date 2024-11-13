@@ -23,5 +23,4 @@ namespace KTEngine
 		Physics::RigidBody mRigidBody;
 		float mMass = -1.0f;
 	};
-
 }
