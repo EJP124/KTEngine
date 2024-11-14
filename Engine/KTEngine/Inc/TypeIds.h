@@ -14,6 +14,9 @@ namespace KTEngine
 		RigidBody,  //physics object that gets added to the physics world
 		SoundEffect, //adds a single sound effect to an object
 		SoundBank,   //adds an array of sound effects to an object
+		UIText,		//adds a text UI component
+		UISprite,   //adds a sprite to the UI
+		UIButton,	//adds a button to the UI
 		Count
 	};
 
@@ -23,6 +26,7 @@ namespace KTEngine
 		Camera,
 		Render,
 		Physics,
+		UIRender,
 		Count
 	};
 }

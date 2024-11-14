@@ -105,6 +105,18 @@
     <ClInclude Include="Inc\PhysicsService.h">
       <Filter>Inc\Service</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\UIComponent.h">
+      <Filter>Inc\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\UIRenderService.h">
+      <Filter>Inc\Service</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\UITextComponent.h">
+      <Filter>Inc\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\UISpriteComponent.h">
+      <Filter>Inc\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiled.cpp">
@@ -169,6 +181,15 @@
     </ClCompile>
     <ClCompile Include="Src\PhysicsService.cpp">
       <Filter>Src\Service</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UIRenderService.cpp">
+      <Filter>Src\Service</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UITextComponent.cpp">
+      <Filter>Src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UISpriteComponent.cpp">
+      <Filter>Src\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

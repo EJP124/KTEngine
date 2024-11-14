@@ -131,7 +131,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{273A476C-CB08-4126-BE72-9D3C7D74CA94}"
 	ProjectSection(SolutionItems) = preProject
 		Assets\Templates\fps_camera.json = Assets\Templates\fps_camera.json
-		Assets\Templates\test_level.json = Assets\Templates\test_level.json
+		Assets\Templates\ground.json = Assets\Templates\ground.json
 		Assets\Templates\test_model.json = Assets\Templates\test_model.json
 		Assets\Templates\test_object.json = Assets\Templates\test_object.json
 	EndProjectSection
@@ -143,6 +143,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Levels", "Levels", "{D16A857B-7A41-4257-AB8E-1EF49E4A43AE}"
 	ProjectSection(SolutionItems) = preProject
 		Assets\Templates\test_level.json = Assets\Templates\test_level.json
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FW1FontWrapper", "External\FW1FontWrapper\FW1FontWrapper.vcxproj", "{0D034612-14E2-44E7-993A-72344A2CA7BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{F6B0BFAF-E42B-42AF-8A07-3A7736337BC6}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Templates\UI\BarBackground.json = Assets\Templates\UI\BarBackground.json
+		Assets\Templates\UI\BarFull.json = Assets\Templates\UI\BarFull.json
 	EndProjectSection
 EndProject
 Global
@@ -481,6 +489,14 @@ Global
 		{CFC11A3E-1324-4718-9969-267E6D55FA34}.Release|x64.Build.0 = Release|x64
 		{CFC11A3E-1324-4718-9969-267E6D55FA34}.Release|x86.ActiveCfg = Release|Win32
 		{CFC11A3E-1324-4718-9969-267E6D55FA34}.Release|x86.Build.0 = Release|Win32
+		{0D034612-14E2-44E7-993A-72344A2CA7BD}.Debug|x64.ActiveCfg = Debug|x64
+		{0D034612-14E2-44E7-993A-72344A2CA7BD}.Debug|x64.Build.0 = Debug|x64
+		{0D034612-14E2-44E7-993A-72344A2CA7BD}.Debug|x86.ActiveCfg = Debug|Win32
+		{0D034612-14E2-44E7-993A-72344A2CA7BD}.Debug|x86.Build.0 = Debug|Win32
+		{0D034612-14E2-44E7-993A-72344A2CA7BD}.Release|x64.ActiveCfg = Release|x64
+		{0D034612-14E2-44E7-993A-72344A2CA7BD}.Release|x64.Build.0 = Release|x64
+		{0D034612-14E2-44E7-993A-72344A2CA7BD}.Release|x86.ActiveCfg = Release|Win32
+		{0D034612-14E2-44E7-993A-72344A2CA7BD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -531,6 +547,8 @@ Global
 		{93C01768-E2F6-4E7D-A3B0-F02D1F792DB1} = {92BBDC22-E0DA-449D-8D78-DC69ACD1FD35}
 		{CFC11A3E-1324-4718-9969-267E6D55FA34} = {92BBDC22-E0DA-449D-8D78-DC69ACD1FD35}
 		{D16A857B-7A41-4257-AB8E-1EF49E4A43AE} = {273A476C-CB08-4126-BE72-9D3C7D74CA94}
+		{0D034612-14E2-44E7-993A-72344A2CA7BD} = {DB27359A-0C22-40EA-A245-6E55D2489E5D}
+		{F6B0BFAF-E42B-42AF-8A07-3A7736337BC6} = {273A476C-CB08-4126-BE72-9D3C7D74CA94}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2B429F6-D445-4022-B927-3B503F632F7A}

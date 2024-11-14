@@ -11,6 +11,8 @@
 #include "RigidBodyComponent.h"
 #include "SoundBankComponent.h"
 #include "SoundEffectComponent.h"
+#include "UITextComponent.h"
+#include "UISpriteComponent.h"
 
 using namespace KTEngine;
 
@@ -58,6 +60,14 @@ namespace
 		{
 			newComponent = gameObject.AddComponent<SoundEffectComponent>();
 		}
+		else if (componentName == "UITextComponent")
+		{
+			newComponent = gameObject.AddComponent<UITextComponent>();
+		}
+		else if (componentName == "UISpriteComponent")
+		{
+			newComponent = gameObject.AddComponent<UISpriteComponent>();
+		}
 		else
 		{
 			newComponent = TryMake(componentName, gameObject);
@@ -104,6 +114,14 @@ namespace
 		else if (componentName == "SoundEffectComponent")
 		{
 			newComponent = gameObject.GetComponent<SoundEffectComponent>();
+		}
+		else if (componentName == "UITextComponent")
+		{
+			newComponent = gameObject.GetComponent<UITextComponent>();
+		}
+		else if (componentName == "UISpriteComponent")
+		{
+			newComponent = gameObject.GetComponent<UISpriteComponent>();
 		}
 		else
 		{

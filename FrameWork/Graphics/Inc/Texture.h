@@ -31,11 +31,15 @@ namespace KTEngine::Graphics
 		void BindVS(uint32_t slot) const;
 		void BindPS(uint32_t slot) const;
 
-		void* GetRawData() const { return mShaderResourceView; }
+		void* GetRawData() const;
+
+		uint32_t GetWidth() const;
+		uint32_t GetHeight() const;
 
 	protected:
 		DXGI_FORMAT GetDXGIFormat(Format format);
-
 		ID3D11ShaderResourceView* mShaderResourceView = nullptr;
+		uint32_t mWidth = 0;
+		uint32_t mHeight = 0;
 	};
 }

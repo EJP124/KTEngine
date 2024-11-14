@@ -1,0 +1,7 @@
+{
+  "Components": {
+    "UISpriteComponent": {
+      "Texture": "../../Assets/Textures/Images/bar_empty.png"
+    }
+  }
+}
