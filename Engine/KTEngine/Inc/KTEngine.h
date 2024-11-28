@@ -19,6 +19,7 @@
 #include "CameraService.h"
 #include "PhysicsService.h"
 #include "RenderService.h"
+#include "UIRenderService.h"
 
 //Game Object
 #include "GameObject.h"
@@ -33,9 +34,13 @@
 #include "ModelComponent.h"
 #include "RenderObjectComponent.h"
 #include "RigidBodyComponent.h"
-#include "SoundBankComponent.h"
 #include "SoundEffectComponent.h"
+#include "SoundBankComponent.h"
 #include "TransformComponent.h"
+#include "UIComponent.h"
+#include "UISpriteComponent.h"
+#include "UITextComponent.h"
+#include "UIButtonComponent.h"
 
 namespace KTEngine
 {

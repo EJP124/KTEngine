@@ -200,7 +200,7 @@ void GameWorld::SaveLevel(std::filesystem::path saveFile)
 
 	FILE* file = nullptr;
 	auto err = fopen_s(&file, saveFile.u8string().c_str(), "w");
-	//ASSERT(err == 0, "GameObjects", gameObjects, doc.GetAllocator());
+	ASSERT(err == 0, "GameObject: failed to open template file %s", saveFile.u8string().c_str());
 
 	char writeBuffer[65536];
 	rapidjson::FileWriteStream writeStream(file, writeBuffer, sizeof(writeBuffer));
@@ -231,7 +231,7 @@ GameObject* GameWorld::CreateGameObject(std::string name, const std::filesystem:
 	newGameObject->mHandle.mGeneration = slot.generation;
 	if (!templatePath.empty())
 	{
-		GameObjectFactory::Make(templatePath, *newGameObject);
+		GameObjectFactory::Make(templatePath, *newGameObject, *this);
 		newGameObject->mTemplateFilePath = templatePath.u8string();
 		if (initialize)
 		{

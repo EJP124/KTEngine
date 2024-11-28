@@ -32,24 +32,16 @@
           "Looping": true
         }
       }
-    },
-    "CustomDebugDrawComponent": {
-      "Slices": 30,
-      "Rings": 30,
-      "Radius": 1.0,
-      "Position": [ 0.0, 1.0, 0.0 ],
-      "Color": [ 1.0, 0.0, 0.0, 1.0 ]
-    },
-    "UITextComponent": {
-      "Text": "Hello There Class",
-      "Size": 30.0,
-      "Position": [ 250.0, 250.0 ],
-      "Color": [ 1.0, 1.0, 1.0, 1.0 ]
-    },
-    "UISpriteComponent": {
-      "Texture": "../../Assets/Textures/Images/bar_empty.png",
-      "Pivot": "TopLeft",
-      "Position": [10.0, 10.0]
+    }
+  },
+  "Children": {
+    "CarryObject": {
+      "Template": "../../Assets/Templates/test_carry_obj.json",
+      "Components": {
+        "TransformComponent": {
+          "Position": [ -0.5, 1.0, 0.0 ]
+        }
+      }
     }
   }
 }
