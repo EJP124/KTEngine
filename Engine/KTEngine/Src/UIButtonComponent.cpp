@@ -91,8 +91,8 @@ void UIButtonComponent::Deserialize(const rapidjson::Value& value)
 	if (value.HasMember("Position"))
 	{
 		auto pos = value["Position"].GetArray();
-		const float x = pos[0].GetFloat();
-		const float y = pos[1].GetFloat();
+		mPosition.x = pos[0].GetFloat();
+		mPosition.y = pos[1].GetFloat();
 	}
 	if (value.HasMember("Rotation"))
 	{

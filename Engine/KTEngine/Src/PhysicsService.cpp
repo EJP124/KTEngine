@@ -8,7 +8,7 @@
 using namespace KTEngine;
 using namespace KTEngine::Physics;
 
-void KTEngine::PhysicsService::Update(float deltaTime)
+void PhysicsService::Update(float deltaTime)
 {
 	if (mEnabled)
 	{
@@ -16,7 +16,7 @@ void KTEngine::PhysicsService::Update(float deltaTime)
 	}
 }
 
-void KTEngine::PhysicsService::DebugUI()
+void PhysicsService::DebugUI()
 {
 	if (mEnabled)
 	{
@@ -24,7 +24,7 @@ void KTEngine::PhysicsService::DebugUI()
 	}
 }
 
-void KTEngine::PhysicsService::Serialize(rapidjson::Document& doc, rapidjson::Value& value)
+void PhysicsService::Serialize(rapidjson::Document& doc, rapidjson::Value& value)
 {
 	PhysicsWorld::Settings settings = PhysicsWorld::Get()->GetSettings();
 	rapidjson::Value serviceValue(rapidjson::kObjectType);
@@ -34,7 +34,7 @@ void KTEngine::PhysicsService::Serialize(rapidjson::Document& doc, rapidjson::Va
 	value.AddMember("PhysicsService", serviceValue, doc.GetAllocator());
 }
 
-void KTEngine::PhysicsService::Deserialize(const rapidjson::Value& value)
+void PhysicsService::Deserialize(const rapidjson::Value& value)
 {
 	PhysicsWorld::Settings settings = PhysicsWorld::Get()->GetSettings();
 	if (value.HasMember("Gravity"))
@@ -55,17 +55,17 @@ void KTEngine::PhysicsService::Deserialize(const rapidjson::Value& value)
 	PhysicsWorld::Get()->UpdateSettings(settings);
 }
 
-void KTEngine::PhysicsService::Register(RigidBodyComponent* rigidBodyComponent)
+void PhysicsService::Register(RigidBodyComponent* rigidBodyComponent)
 {
 	PhysicsWorld::Get()->Register(&rigidBodyComponent->mRigidBody);
 }
 
-void KTEngine::PhysicsService::Unregister(RigidBodyComponent* rigidBodyComponent)
+void PhysicsService::Unregister(RigidBodyComponent* rigidBodyComponent)
 {
 	PhysicsWorld::Get()->Unregister(&rigidBodyComponent->mRigidBody);
 }
 
-void KTEngine::PhysicsService::SetEnabled(bool enabled)
+void PhysicsService::SetEnabled(bool enabled)
 {
 	mEnabled = enabled;
 }

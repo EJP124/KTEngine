@@ -6,7 +6,7 @@
       "Scale": [ 1.0, 1.0, 1.0 ]
     },
     "MeshComponent": {
-      "Sphere": {
+      "Shape": {
         "Type": "Sphere",
         "Slices": 60,
         "Rings": 60,
