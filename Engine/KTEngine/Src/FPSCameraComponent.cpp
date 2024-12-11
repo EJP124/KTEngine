@@ -13,6 +13,8 @@ void FPSCameraComponent::Initialize()
 {
 	mCameraComponent = GetOwner().GetComponent<CameraComponent>();
 	ASSERT(mCameraComponent != nullptr, "FPSCameraComponent: Camera not found");
+
+	
 }
 
 void FPSCameraComponent::Terminate()

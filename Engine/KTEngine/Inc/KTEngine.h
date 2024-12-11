@@ -30,6 +30,7 @@
 #include "AnimatorComponent.h"
 #include "CameraComponent.h"
 #include "FPSCameraComponent.h"
+#include "ThirdPersonCameraComponent.h"
 #include "MeshComponent.h"	
 #include "ModelComponent.h"
 #include "RenderObjectComponent.h"

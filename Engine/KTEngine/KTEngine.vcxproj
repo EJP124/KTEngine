@@ -160,6 +160,7 @@
     <ClInclude Include="Inc\Service.h" />
     <ClInclude Include="Inc\SoundBankComponent.h" />
     <ClInclude Include="Inc\SoundEffectComponent.h" />
+    <ClInclude Include="Inc\ThirdPersonCameraComponent.h" />
     <ClInclude Include="Inc\TransformComponent.h" />
     <ClInclude Include="Inc\TypeIds.h" />
     <ClInclude Include="Inc\UIButtonComponent.h" />
@@ -195,6 +196,7 @@
     <ClCompile Include="Src\SaveUtil.cpp" />
     <ClCompile Include="Src\SoundBankComponent.cpp" />
     <ClCompile Include="Src\SoundEffectComponent.cpp" />
+    <ClCompile Include="Src\ThirdPersonCameraComponent.cpp" />
     <ClCompile Include="Src\TransformComponent.cpp" />
     <ClCompile Include="Src\UIButtonComponent.cpp" />
     <ClCompile Include="Src\UIRenderService.cpp" />

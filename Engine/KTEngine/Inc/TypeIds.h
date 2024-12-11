@@ -8,6 +8,7 @@ namespace KTEngine
 		Transform,   //transform component for location data
 		Camera,      //contains a Camera for viewing
 		FPSCamera,   // Functionality for a camera to move
+		ThirdPersonCamera,
 		Mesh,        //Create a mesh render object
 		Model,		 //creates a model render object
 		Animator,	// manages and controls animations

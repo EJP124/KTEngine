@@ -21,18 +21,12 @@
   },
   "GameObjects": {
     "Camera": {
-      "Template": "../../Assets/Templates/fps_camera.json",
-      "Components": {
-        "CameraComponent": {
-          "Position": [ 0.0, 2.0, -5.0 ],
-          "LookAt": [ 0.0, 1.0, 0.0 ]
-        }
-      }
+      "Template": "../../Assets/Templates/fps_camera.json"
     },
     "Ground": {
       "Template": "../../Assets/Templates/ground.json"
     },
-    "Object0": {
+    "Player": {
       "Template": "../../Assets/Templates/test_object.json",
       "Components": {
         "TransformComponent": {
