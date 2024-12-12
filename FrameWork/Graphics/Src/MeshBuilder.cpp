@@ -90,6 +90,9 @@ namespace
 	}
 }
 
+
+
+
 MeshPC MeshBuilder::CreatePyramidPC(float size)
 {
 	MeshPC mesh;
@@ -184,6 +187,43 @@ MeshPC MeshBuilder::CreateRectPC(float width, float height, float depth)
 	mesh.vertices.push_back({ {  hw, -hh, hd }, GetNextColor(index) });
 
 	CreateCubeIndices(mesh.indices);
+
+	return mesh;
+}
+
+Mesh MeshBuilder::CreateRect(float width, float height, float depth)
+{
+	Mesh mesh;
+	float halfWidth = width * 0.5f;
+	float halfHeight = height * 0.5f;
+	float halfDepth = depth * 0.5f;
+
+	// Define 8 vertices (position, normal, tangent, UV, bone data)
+	mesh.vertices = {
+		// Front face
+		{{-halfWidth, -halfHeight, -halfDepth}, {0, 0, -1}, {1, 0, 0}, {0, 1}, {0, 0, 0, 0}, {1, 0, 0, 0}},
+		{{ halfWidth, -halfHeight, -halfDepth}, {0, 0, -1}, {1, 0, 0}, {1, 1}, {0, 0, 0, 0}, {1, 0, 0, 0}},
+		{{ halfWidth,  halfHeight, -halfDepth}, {0, 0, -1}, {1, 0, 0}, {1, 0}, {0, 0, 0, 0}, {1, 0, 0, 0}},
+		{{-halfWidth,  halfHeight, -halfDepth}, {0, 0, -1}, {1, 0, 0}, {0, 0}, {0, 0, 0, 0}, {1, 0, 0, 0}},
+
+		// ... (Repeat similar for other 5 faces)
+	};
+
+	// Define indices for the 6 faces (12 triangles)
+	mesh.indices = {
+		// Front face
+		0, 1, 2, 2, 3, 0,
+		// Back face
+		4, 5, 6, 6, 7, 4,
+		// Left face
+		8, 9, 10, 10, 11, 8,
+		// Right face
+		12, 13, 14, 14, 15, 12,
+		// Top face
+		16, 17, 18, 18, 19, 16,
+		// Bottom face
+		20, 21, 22, 22, 23, 20
+	};
 
 	return mesh;
 }

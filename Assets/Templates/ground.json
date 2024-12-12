@@ -9,8 +9,8 @@
       "Shape": {
         "Type": "Plane",
         "Direction":  "Horizontal",
-        "Rows": 20,
-        "Columns": 20,
+        "Rows": 200,
+        "Columns": 200,
         "Spacing": 1.0
       },
       "Material": {
@@ -28,7 +28,7 @@
       "Mass": 0.0,
       "ColliderData": {
         "Shape": "Hull",
-        "HalfExtents": [ 10.0, 0.1, 10.0 ],
+        "HalfExtents": [ 100.0, 0.1, 100.0 ],
         "Origin": [ 0.0, -0.1, 0.0 ]
       }
     }

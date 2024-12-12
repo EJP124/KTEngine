@@ -7,6 +7,7 @@ namespace KTEngine
 {
 	class CameraComponent;
 	class TransformComponent;
+	class RigidBodyComponent;
 
 	class ThirdPersonCameraComponent final : public Component
 	{
@@ -15,7 +16,6 @@ namespace KTEngine
 
 		void Initialize() override;
 		void Terminate() override;
-		void DebugUI() override;
 		void Update(float deltaTime) override;
 
 	private:

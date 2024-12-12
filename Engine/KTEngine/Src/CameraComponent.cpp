@@ -24,12 +24,7 @@ void CameraComponent::Terminate()
 void CameraComponent::DebugUI()
 {
 	Vector3 pos = mCamera.GetPosition();
-	if (ImGui::DragFloat3("Camera Position", &pos.x, 0.1f))
-	{
-		mCamera.SetPosition(pos);
-	}
-	Matrix4 matTrans = Matrix4::Translation(mCamera.GetPosition());
-	SimpleDraw::AddTransform(matTrans);
+	ImGui::DragFloat3("Camera Position", &pos.x, 0.1f);
 }
 
 void CameraComponent::Update(float deltaTime)

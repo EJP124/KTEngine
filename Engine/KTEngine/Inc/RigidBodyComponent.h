@@ -16,6 +16,7 @@ namespace KTEngine
 
 		void SetPosition(const Math::Vector3& position);
 		void SetVelocity(const Math::Vector3& velocity);
+		void AddForce(const Math::Vector3& force, const Math::Vector3& position);
 
 	private:
 		friend class PhysicsService;

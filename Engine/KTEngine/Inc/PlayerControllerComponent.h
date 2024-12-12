@@ -2,11 +2,23 @@
 
 #include "Component.h"
 
-class PlayerControllerComponent final : public Component
+
+namespace KTEngine
 {
-public:
-	SET_TYPE_ID(ComponentId::RigidBody);
+	class RigidBodyComponent;
+	class TransformComponent;
+	class PlayerControllerComponent final : public Component
+	{
+	public:
+		SET_TYPE_ID(ComponentId::PlayerController);
 
+		void Initialize() override;
+		void Terminate() override;
+		void Update(float deltaTime) override;
+	private:
 
-private:
-};
+		RigidBodyComponent* mPlayerRb = nullptr;
+		TransformComponent* mTransformComponent = nullptr;
+		Vector3 speed = { 0,0,500 };
+	};
+}

@@ -97,3 +97,8 @@ void RigidBodyComponent::SetVelocity(const Math::Vector3& velocity)
 {
 	mRigidBody.SetVelocity(velocity);
 }
+
+void RigidBodyComponent::AddForce(const Math::Vector3& force, const Math::Vector3& position)
+{
+	mRigidBody.AddForce(force, position);
+}

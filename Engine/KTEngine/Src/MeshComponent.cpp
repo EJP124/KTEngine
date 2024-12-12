@@ -39,6 +39,13 @@ void MeshComponent::Deserialize(const rapidjson::Value& value)
 					meshData.mesh = MeshBuilder::CreateHorizontalPlane(rows, columns, spacing);
 				}
 			}
+			else if (shapeType == "Rect")
+			{
+				float width = shapeData["Width"].GetFloat();
+				float height = shapeData["Height"].GetFloat();
+				float depth = shapeData["Depth"].GetFloat();
+				meshData.mesh = MeshBuilder::CreateRect(width, height, depth);
+			}
 			else if (shapeType == "Cube")
 			{
 				float size = shapeData["Size"].GetFloat();

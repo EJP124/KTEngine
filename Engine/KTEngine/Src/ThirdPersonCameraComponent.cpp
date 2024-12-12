@@ -2,9 +2,9 @@
 #include "ThirdPersonCameraComponent.h"
 
 #include "GameObject.h"
-#include "SaveUtil.h"
 
 #include "TransformComponent.h"
+#include "RigidBodyComponent.h"
 
 #include "CameraComponent.h"
 
@@ -15,13 +15,16 @@ using namespace KTEngine::Input;
 void ThirdPersonCameraComponent::Initialize()
 {
 	mCameraComponent = GetOwner().GetComponent<CameraComponent>();
-	ASSERT(mCameraComponent != nullptr, "FPSCameraComponent: Camera not found");
+	ASSERT(mCameraComponent != nullptr, "ThirdPersonCameraComponent: Camera not found");
 
 	mPlayerTransform = GetOwner().GetComponent<TransformComponent>();
+	ASSERT(mCameraComponent != nullptr, "ThirdPersonCameraComponent: Camera not found");
+	
 }
 void ThirdPersonCameraComponent::Terminate()
 {
 	mCameraComponent = nullptr;
+	mPlayerTransform = nullptr;
 }
 void ThirdPersonCameraComponent::Update(float deltaTime)
 {
@@ -39,13 +42,4 @@ void ThirdPersonCameraComponent::Update(float deltaTime)
 		
 		
 	}
-	//camera.SetPosition(parent->GetComponent<TransformComponent>()->position);
-	// vector3 targetPosition = transformComponent + offset
-	// vector3 cameraPosition = Lerp(camera->getposition(), targetPosition, 0.6 * deltaTime)
-	// camera.setposition(cameraPosition)
-	// camera.setlookat(transformComponent + lookoffset) or camer.setLookat(look direction)
-}
-
-void ThirdPersonCameraComponent::DebugUI()
-{
 }

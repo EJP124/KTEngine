@@ -15,7 +15,7 @@ namespace KTEngine::Graphics
 
 		// Rect
 		static MeshPC CreateRectPC(float width, float height, float depth);
-
+		static Mesh CreateRect(float width, float height, float depth);
 		// Plane
 		static MeshPC CreatePlanePC(uint32_t numRows, uint32_t numCols, float spacing);
 		static Mesh CreateGroundPlane(uint32_t numRows, uint32_t numCols, float spacing);

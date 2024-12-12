@@ -17,6 +17,7 @@ namespace KTEngine::Physics
 
 		void SetPosition(const KTEngine::Math::Vector3& position);
 		void SetVelocity(const KTEngine::Math::Vector3& velocity);
+		void AddForce(const KTEngine::Math::Vector3& force, const KTEngine::Math::Vector3& position);
 
 		bool isDynamic() const;
 

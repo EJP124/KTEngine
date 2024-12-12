@@ -52,6 +52,12 @@ void RigidBody::SetVelocity(const KTEngine::Math::Vector3& velocity)
 	mRigidBody->setLinearVelocity(ConvertTobtVector3(velocity));
 }
 
+void RigidBody::AddForce(const KTEngine::Math::Vector3& force, const KTEngine::Math::Vector3& position)
+{
+	mRigidBody->activate();
+	mRigidBody->applyForce(ConvertTobtVector3(force), ConvertTobtVector3(position));
+;}
+
 bool RigidBody::isDynamic() const
 {
 	return mMass > 0.0f;

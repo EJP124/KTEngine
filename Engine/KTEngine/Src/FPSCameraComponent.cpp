@@ -16,11 +16,13 @@ void FPSCameraComponent::Initialize()
 	ASSERT(mCameraComponent != nullptr, "FPSCameraComponent: Camera not found");
 
 	mPlayerTransform = GetOwner().GetComponent<TransformComponent>();
+	ASSERT(mCameraComponent != nullptr, "FPSCameraComponent: Transform not found");
 }
 
 void FPSCameraComponent::Terminate()
 {
 	mCameraComponent = nullptr;
+	mPlayerTransform = nullptr;
 }
 
 void FPSCameraComponent::Update(float deltaTime)
@@ -29,7 +31,7 @@ void FPSCameraComponent::Update(float deltaTime)
 	{
 		Camera& camera = mCameraComponent->GetCamera();
 		Vector3 targetPosition = mPlayerTransform->position;
-		Vector3 cameraPosition = Lerp(camera.GetPosition(), targetPosition, 0.8 * deltaTime);
+		Vector3 cameraPosition = Lerp(camera.GetPosition(), targetPosition, 5.0 * deltaTime);
 
 		camera.SetPosition(cameraPosition);
 

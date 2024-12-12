@@ -9,6 +9,7 @@ namespace KTEngine
 		Camera,      //contains a Camera for viewing
 		FPSCamera,   // Functionality for a camera to move
 		ThirdPersonCamera,
+		PlayerController,
 		Mesh,        //Create a mesh render object
 		Model,		 //creates a model render object
 		Animator,	// manages and controls animations
