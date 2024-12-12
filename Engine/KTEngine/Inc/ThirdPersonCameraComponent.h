@@ -6,6 +6,7 @@
 namespace KTEngine
 {
 	class CameraComponent;
+	class TransformComponent;
 
 	class ThirdPersonCameraComponent final : public Component
 	{
@@ -19,7 +20,8 @@ namespace KTEngine
 
 	private:
 		CameraComponent* mCameraComponent = nullptr;
-		GameObject* mPlayer = nullptr;
-		Graphics::Camera mCamera;
+		TransformComponent* mPlayerTransform =nullptr;
+		Vector3 cameraPosOffset = Vector3{ 0, 2, -5 };
+		float cameraLookOffset = -1.0f;
 	};
 }

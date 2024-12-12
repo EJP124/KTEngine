@@ -20,19 +20,11 @@
     }
   },
   "GameObjects": {
-    "Camera": {
-      "Template": "../../Assets/Templates/fps_camera.json"
-    },
     "Ground": {
       "Template": "../../Assets/Templates/ground.json"
     },
-    "Player": {
-      "Template": "../../Assets/Templates/test_object.json",
-      "Components": {
-        "TransformComponent": {
-          "Position": [ 2.0, 10.0, 0.0 ]
-        }
-      }
+    "Car": {
+      "Template": "../../Assets/Templates/test_object.json"
     },
     "Object1": {
       "Template": "../../Assets/Templates/test_model.json",
@@ -41,9 +33,6 @@
           "Position": [ 0.0, 0.0, 0.0 ]
         }
       }
-    },
-    "TestScreen": {
-      "Template": "../../Assets/Templates/UI/test_screen.json"
     }
   }
 }

@@ -26,6 +26,14 @@
         "BumpMap": "../../Assets/Textures/earth/earth_bump.jpg"
       }
     },
+    "CameraComponent": {
+    },
+    "ThirdPersonCameraComponent": {
+
+    },
+    "FPSCameraComponent": {
+
+    },
     "RigidBodyComponent": {
       "Mass": 1.0,
       "ColliderData": {

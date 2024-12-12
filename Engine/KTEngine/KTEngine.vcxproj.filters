@@ -123,6 +123,9 @@
     <ClInclude Include="Inc\ThirdPersonCameraComponent.h">
       <Filter>Inc\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\PlayerControllerComponent.h">
+      <Filter>Inc\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiled.cpp">
@@ -201,6 +204,9 @@
       <Filter>Src\Component</Filter>
     </ClCompile>
     <ClCompile Include="Src\ThirdPersonCameraComponent.cpp">
+      <Filter>Src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PlayerControllerComponent.cpp">
       <Filter>Src\Component</Filter>
     </ClCompile>
   </ItemGroup>

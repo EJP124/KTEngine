@@ -7,6 +7,7 @@
 
 using namespace KTEngine;
 using namespace KTEngine::Graphics;
+using namespace KTEngine::Input;
 
 void CameraComponent::Initialize()
 {
@@ -23,12 +24,29 @@ void CameraComponent::Terminate()
 void CameraComponent::DebugUI()
 {
 	Vector3 pos = mCamera.GetPosition();
-	if (ImGui::DragFloat3("Position", &pos.x, 0.1f))
+	if (ImGui::DragFloat3("Camera Position", &pos.x, 0.1f))
 	{
 		mCamera.SetPosition(pos);
 	}
 	Matrix4 matTrans = Matrix4::Translation(mCamera.GetPosition());
 	SimpleDraw::AddTransform(matTrans);
+}
+
+void CameraComponent::Update(float deltaTime)
+{
+	auto input = InputSystem::Get();
+
+	if (input->IsKeyPressed(KeyCode::P))
+	{
+		if (cType == CameraType::FPSCamera)
+		{
+			cType = CameraType::ThirdPersonCamera;
+		}
+		else
+		{
+			cType = CameraType::FPSCamera;
+		}
+	}
 }
 
 void CameraComponent::Serialize(rapidjson::Document& doc, rapidjson::Value& value)
@@ -67,3 +85,9 @@ const Graphics::Camera& CameraComponent::GetCamera() const
 {
 	return mCamera;
 }
+
+const CameraType CameraComponent::GetCameraType() const
+{
+	return cType;
+}
+
