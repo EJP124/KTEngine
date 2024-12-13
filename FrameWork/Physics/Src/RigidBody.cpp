@@ -58,6 +58,18 @@ void RigidBody::AddForce(const KTEngine::Math::Vector3& force, const KTEngine::M
 	mRigidBody->applyForce(ConvertTobtVector3(force), ConvertTobtVector3(position));
 ;}
 
+void RigidBody::SetAngularVelocity(const KTEngine::Math::Vector3& angularVelocity)
+{
+	mRigidBody->activate();
+	mRigidBody->setAngularVelocity(ConvertTobtVector3(angularVelocity));
+}
+
+Vector3 RigidBody::GetVelocity()
+{
+	mRigidBody->activate();
+	return ConvertToVector3(mRigidBody->getLinearVelocity());
+}
+
 bool RigidBody::isDynamic() const
 {
 	return mMass > 0.0f;

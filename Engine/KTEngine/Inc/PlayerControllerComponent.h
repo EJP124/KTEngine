@@ -15,10 +15,17 @@ namespace KTEngine
 		void Initialize() override;
 		void Terminate() override;
 		void Update(float deltaTime) override;
+
 	private:
 
 		RigidBodyComponent* mPlayerRb = nullptr;
 		TransformComponent* mTransformComponent = nullptr;
-		Vector3 speed = { 0,0,500 };
+		
+		Vector3 moveVelocity = Vector3::Zero;
+		float force = 0.0f;
+		float friction = 30.0f;
+		float brakeForce = 200.0f;
+
+		Vector3 turnAngle = Vector3::Zero;
 	};
 }

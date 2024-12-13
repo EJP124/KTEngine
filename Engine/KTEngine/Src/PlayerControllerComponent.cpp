@@ -26,16 +26,63 @@ void PlayerControllerComponent::Terminate()
 void PlayerControllerComponent::Update(float deltaTime)
 {
 	auto input = InputSystem::Get();
-
 	
 	
 	if (input->IsKeyDown(KeyCode::W))
 	{
-		mPlayerRb->AddForce(speed * deltaTime, mTransformComponent->position);
+		force = 200.0f * deltaTime;
 	}
 	else if (input->IsKeyDown(KeyCode::S))
 	{
-		mPlayerRb->SetVelocity(-speed * deltaTime);
+		if (force <= 0)
+		{
+			force = 0;
+		}
+		else
+		{
+			force -= (friction + brakeForce) * deltaTime;
+		}
+		
+	}
+	else
+	{
+		if (force <= 0)
+		{
+			force = 0;
+		}
+		else
+		{
+			force -= friction * deltaTime;
+		}
 	}
 
+	if (mPlayerRb->GetVelocity() > 0.01)
+	{
+		if (input->IsKeyDown(KeyCode::A))
+		{
+			turnAngle = { 0, -5, 0 };
+		}
+		else if (input->IsKeyDown(KeyCode::D))
+		{
+			turnAngle = { 0, 5, 0 };
+		}
+		else
+		{
+			turnAngle = Vector3::Zero;
+		}
+	}
+	else
+	{
+		turnAngle = Vector3::Zero;
+	}
+	
+	mPlayerRb->SetAngularVelocity(turnAngle);
+	Matrix4 matWorld = mTransformComponent->GetMatrix4();
+	mPlayerRb->AddForce(Math::GetLook(matWorld) * force, mTransformComponent->position);
 }
+
+
+
+
+
+

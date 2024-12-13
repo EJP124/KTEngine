@@ -21,7 +21,8 @@ namespace KTEngine
 	private:
 		CameraComponent* mCameraComponent = nullptr;
 		TransformComponent* mPlayerTransform =nullptr;
-		Vector3 cameraPosOffset = Vector3{ 0, 2, -5 };
-		float cameraLookOffset = -1.0f;
+		Vector3 cameraPositionOffset = Vector3{ 0, 2, 0 };
+		float cameraPosOffset = 3.0f;
+		float cameraLookOffset = -0.3f;
 	};
 }

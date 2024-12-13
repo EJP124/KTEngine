@@ -102,3 +102,17 @@ void RigidBodyComponent::AddForce(const Math::Vector3& force, const Math::Vector
 {
 	mRigidBody.AddForce(force, position);
 }
+
+float RigidBodyComponent::GetVelocity()
+{
+	float magn = 0.0f;
+	auto value = mRigidBody.GetVelocity();
+	magn = mRigidBody.GetVelocity().x * mRigidBody.GetVelocity().x + mRigidBody.GetVelocity().y * mRigidBody.GetVelocity().y + mRigidBody.GetVelocity().z * mRigidBody.GetVelocity().z;
+
+	return magn;
+}
+
+void RigidBodyComponent::SetAngularVelocity(const Math::Vector3& angularVelocity)
+{
+	mRigidBody.SetAngularVelocity(angularVelocity);
+}
