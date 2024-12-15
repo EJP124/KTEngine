@@ -140,6 +140,7 @@
     <ClInclude Include="Inc\AppState.h" />
     <ClInclude Include="Inc\CameraComponent.h" />
     <ClInclude Include="Inc\CameraService.h" />
+    <ClInclude Include="Inc\CarModifyComponent.h" />
     <ClInclude Include="Inc\Common.h" />
     <ClInclude Include="Inc\Component.h" />
     <ClInclude Include="Inc\Event.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Src\App.cpp" />
     <ClCompile Include="Src\CameraComponent.cpp" />
     <ClCompile Include="Src\CameraService.cpp" />
+    <ClCompile Include="Src\CarModifyComponent.cpp" />
     <ClCompile Include="Src\EventManager.cpp" />
     <ClCompile Include="Src\FPSCameraComponent.cpp" />
     <ClCompile Include="Src\GameObject.cpp" />

@@ -34,6 +34,7 @@
 #include "MeshComponent.h"	
 #include "ModelComponent.h"
 #include "PlayerControllerComponent.h"
+#include "CarModifyComponent.h" 
 #include "RenderObjectComponent.h"
 #include "RigidBodyComponent.h"
 #include "SoundEffectComponent.h"

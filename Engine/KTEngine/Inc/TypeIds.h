@@ -18,7 +18,8 @@ namespace KTEngine
 		SoundBank,   //adds an array of sound effects to an object
 		UIText,		//adds a text UI component
 		UISprite,   //adds a sprite to the UI
-		UIButton,	//adds a button to the UI
+		UIButton, //adds a button to the UI
+		CarModifyComponent,
 		Count
 	};
 

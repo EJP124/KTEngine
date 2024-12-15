@@ -1,18 +1,22 @@
 {
   "Components": {
     "TransformComponent": {
-      "Position": [ 0.0, 5.0, 5.0 ],
-      "Rotation": [ 0, 0, 0.0, 1.0 ],
+      "Position": [0, 5.0, 5.0 ],
+      "Rotation": [ 0.0, 0.0, 0.0, 1.0 ],
       "Scale": [ 1.0, 1.0, 1.0 ]
     },
     "ModelComponent": {
       "FileName": "../../Assets/Models/Timmy/Timmy.model",
-      "CastShadow": false
-    },
-    "PlayerControllerComponent": {
-
+        "CastShadow":  false
     },
     "CameraComponent": {
+    },
+    "RigidBodyComponent": {
+      "Mass": 1.0,
+      "ColliderData": {
+        "Shape": "Box",
+        "HalfExtents": [0.5,0.5,1]
+      }
     },
     "ThirdPersonCameraComponent": {
 
@@ -20,12 +24,13 @@
     "FPSCameraComponent": {
 
     },
-    "RigidBodyComponent": {
-      "Mass": 1.0,
-      "ColliderData": {
-        "Shape": "Sphere",
-        "Radius": 1.0
-      }
+    "PlayerControllerComponent": {
+
+    },
+    "CarModifyComponent": {
+      "Tire": 0,
+      "Brake": 0,
+      "Enigne": 0
     },
     "SoundEffectComponent": {
       "FileName": "../../Assets/Sounds/explosion.wav",

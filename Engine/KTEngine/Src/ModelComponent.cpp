@@ -29,12 +29,12 @@ void ModelComponent::Terminate()
 	 
 void ModelComponent::Serialize(rapidjson::Document& doc, rapidjson::Value& value)
 {	 
-	RenderObjectComponent::Serialize(doc, value);
-
-	rapidjson::Value componentValue(rapidjson::kObjectType);
-	SaveUtil::SaveString("FileName", mFileName.c_str(), doc, componentValue);
-	SaveUtil::SaveStringArray("Animations", mAnimations, doc, componentValue);
-	value.AddMember("ModelComponent", componentValue, doc.GetAllocator());
+	//RenderObjectComponent::Serialize(doc, value);
+	//
+	//rapidjson::Value componentValue(rapidjson::kObjectType);
+	//SaveUtil::SaveString("FileName", mFileName.c_str(), doc, componentValue);
+	//SaveUtil::SaveStringArray("Animations", mAnimations, doc, componentValue);
+	//value.AddMember("ModelComponent", componentValue, doc.GetAllocator());
 }	 
 	 
 void ModelComponent::Deserialize(const rapidjson::Value& value)

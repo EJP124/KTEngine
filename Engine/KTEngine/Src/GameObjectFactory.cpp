@@ -7,6 +7,7 @@
 #include "FPSCameraComponent.h"
 #include "ThirdPersonCameraComponent.h"
 #include "PlayerControllerComponent.h"
+#include "CarModifyComponent.h"
 #include "TransformComponent.h"
 #include "MeshComponent.h"
 #include "ModelComponent.h"
@@ -47,6 +48,10 @@ namespace
 		else if (componentName == "PlayerControllerComponent")
 		{
 			newComponent = gameObject.AddComponent<PlayerControllerComponent>();
+		}
+		else if (componentName == "CarModifyComponent")
+		{
+			newComponent = gameObject.AddComponent<CarModifyComponent>();
 		}
 		else if (componentName == "MeshComponent")
 		{
@@ -114,6 +119,10 @@ namespace
 		else if (componentName == "PlayerControllerComponent")
 		{
 			newComponent = gameObject.GetComponent<PlayerControllerComponent>();
+		}
+		else if (componentName == "CarModifyComponent")
+		{
+			newComponent = gameObject.GetComponent<CarModifyComponent>();
 		}
 		else if (componentName == "MeshComponent")
 		{
