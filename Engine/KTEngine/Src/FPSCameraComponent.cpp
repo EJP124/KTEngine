@@ -30,12 +30,10 @@ void FPSCameraComponent::Update(float deltaTime)
 	if (mCameraComponent->GetCameraType() == CameraType::FPSCamera)
 	{
 		Camera& camera = mCameraComponent->GetCamera();
-		Vector3 targetPosition = mPlayerTransform->position;
-		Vector3 cameraPosition = Lerp(camera.GetPosition(), targetPosition, 5.0 * deltaTime);
-
-		camera.SetPosition(cameraPosition);
-
-		Vector3 LookDir = Lerp(camera.GetDirection(), Vector3(0, 0, mPlayerTransform->position.z), 0.6 * deltaTime);
+		Matrix4 matWorld = mPlayerTransform->GetMatrix4();
+		camera.SetPosition(mPlayerTransform->position + Math::GetLook(matWorld));
+		
+		Vector3 LookDir = Math::GetLook(matWorld);
 		Normalize(LookDir);
 		camera.SetDirection(LookDir);
 

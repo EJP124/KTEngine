@@ -60,11 +60,11 @@ void PlayerControllerComponent::Update(float deltaTime)
 	{
 		if (input->IsKeyDown(KeyCode::A))
 		{
-			turnAngle = { 0, -5, 0 };
+			turnAngle = { 0, -2, 0 };
 		}
 		else if (input->IsKeyDown(KeyCode::D))
 		{
-			turnAngle = { 0, 5, 0 };
+			turnAngle = { 0, 2, 0 };
 		}
 		else
 		{

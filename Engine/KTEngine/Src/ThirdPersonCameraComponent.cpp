@@ -30,14 +30,21 @@ void ThirdPersonCameraComponent::Update(float deltaTime)
 {
 	if (mCameraComponent->GetCameraType() == CameraType::ThirdPersonCamera)
 	{
+
+		
 		Camera& camera = mCameraComponent->GetCamera();
 		Matrix4 matWorld = mPlayerTransform->GetMatrix4();
 		Vector3 targetPosition = mPlayerTransform->position + (Math::GetLook(matWorld) * -cameraPosOffset ) + cameraPositionOffset;
-		Vector3 cameraPosition = Lerp(camera.GetPosition(), targetPosition, 1.6 * deltaTime);
 
+		if (Distance(camera.GetPosition(), targetPosition) > 4)
+		{
+			cameraSpeed *= 2;
+		}
+
+		Vector3 cameraPosition = Lerp(camera.GetPosition(), targetPosition, cameraSpeed * deltaTime);
 		camera.SetPosition(cameraPosition);
 
-		Vector3 LookDir = Lerp(camera.GetDirection(), Math::GetLook(matWorld) + Vector3(0, cameraLookOffset, 0), 1.6 * deltaTime);
+		Vector3 LookDir = Lerp(camera.GetDirection(), Math::GetLook(matWorld) + Vector3(0, cameraLookOffset, 0), cameraLookSpeed * deltaTime);
 		Normalize(LookDir);
 		camera.SetDirection(LookDir);
 		

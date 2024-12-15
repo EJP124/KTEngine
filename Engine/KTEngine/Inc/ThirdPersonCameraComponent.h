@@ -24,5 +24,7 @@ namespace KTEngine
 		Vector3 cameraPositionOffset = Vector3{ 0, 2, 0 };
 		float cameraPosOffset = 3.0f;
 		float cameraLookOffset = -0.3f;
+		float cameraSpeed = 1.6f;
+		float cameraLookSpeed = 1.6f;
 	};
 }
