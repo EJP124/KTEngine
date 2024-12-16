@@ -10,4 +10,5 @@ namespace KTEngine::SaveUtil
 	void SaveVector3(const char* key, const Vector3& value, rapidjson::Document& doc, rapidjson::Value& member);
 	void SaveQuaternion(const char* key, const Quaternion& value, rapidjson::Document& doc, rapidjson::Value& member);
 	void SaveColor(const char* key, const Color& value, rapidjson::Document& doc, rapidjson::Value& member);
+	void SaveObj(const char* key, rapidjson::Document& doc, rapidjson::Value& member);
 }

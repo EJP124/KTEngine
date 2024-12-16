@@ -64,3 +64,12 @@ void SaveUtil::SaveColor(const char* key, const Color& value, rapidjson::Documen
 	colorArray.PushBack(value.w, doc.GetAllocator());
 	member.AddMember(str, colorArray, doc.GetAllocator());
 }
+
+void SaveUtil::SaveObj(const char* key,  rapidjson::Document& doc, rapidjson::Value& member)
+{
+	rapidjson::GenericStringRef<char> str(key);
+	rapidjson::Value componentValue(rapidjson::kObjectType);
+	SaveString("Shape", "Box", doc, componentValue);
+	SaveVector3("HalfExtents", { 0.5, 0.5, 1 }, doc, componentValue);
+	member.AddMember(str, componentValue, doc.GetAllocator());
+}

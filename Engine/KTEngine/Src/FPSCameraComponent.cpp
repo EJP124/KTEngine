@@ -41,4 +41,13 @@ void FPSCameraComponent::Update(float deltaTime)
 	
 }
 
+void FPSCameraComponent::Serialize(rapidjson::Document& doc, rapidjson::Value& value)
+{
+	Camera& mCamera = mCameraComponent->GetCamera();
+	rapidjson::Value componentValue(rapidjson::kObjectType);
+	SaveUtil::SaveVector3("Position", mCamera.GetPosition(), doc, componentValue);
+	SaveUtil::SaveVector3("LookAt", mCamera.GetPosition() + mCamera.GetDirection(), doc, componentValue);
+	value.AddMember("FPSCameraComponent", componentValue, doc.GetAllocator());
+}
+
 

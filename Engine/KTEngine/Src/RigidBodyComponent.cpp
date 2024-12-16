@@ -3,6 +3,7 @@
 #include "TransformComponent.h"
 
 #include "GameWorld.h"
+#include "SaveUtil.h"
 #include "PhysicsService.h"
 
 using namespace KTEngine;
@@ -32,6 +33,15 @@ void RigidBodyComponent::Terminate()
 void RigidBodyComponent::DebugUI()
 {
 	ImGui::Text("RigidBody");
+}
+
+void RigidBodyComponent::Serialize(rapidjson::Document& doc, rapidjson::Value& value)
+{
+	rapidjson::Value componentValue(rapidjson::kObjectType);
+
+	SaveUtil::SaveFloat("Mass", mMass, doc, componentValue);
+	SaveUtil::SaveObj("ColliderData", doc, componentValue);
+	value.AddMember("RigidBodyComponent", componentValue, doc.GetAllocator());
 }
 
 void RigidBodyComponent::Deserialize(const rapidjson::Value& value)

@@ -48,6 +48,24 @@ void CarModifyComponent::DebugUI()
 		{
 			bs = BrakeSystem::Race;
 		}
+
+		bool useV6Engine = et == EngineType::V6;
+		if (ImGui::Checkbox("V6", &useV6Engine))
+		{
+			et = EngineType::V6;
+		}
+		ImGui::SameLine(0, 20);
+		bool useV8Engine = et == EngineType::V8;
+		if (ImGui::Checkbox("V8", &useV8Engine))
+		{
+			et = EngineType::V8;
+		}
+		ImGui::SameLine(0, 20);
+		bool useV10Engine = et == EngineType::V10;
+		if (ImGui::Checkbox("V10", &useV10Engine))
+		{
+			et = EngineType::V10;
+		}
 	}
 }
 
@@ -109,5 +127,53 @@ void CarModifyComponent::Deserialize(const rapidjson::Value& value)
 		{
 			et = EngineType::V10;
 		}
+	}
+}
+
+float CarModifyComponent::GetBrakeForce()
+{
+	if (bs == BrakeSystem::Stock)
+	{
+		return 100.0f;
+	}
+	else if (bs == BrakeSystem::Sport)
+	{
+		return 200.0f;
+	}
+	else if (bs == BrakeSystem::Race)
+	{
+		return 300.0f;
+	}
+}
+
+float CarModifyComponent::GetTireFriction()
+{
+	if (t == TireType::Soft)
+	{
+		return 60.0f;
+	}
+	else if (t == TireType::Medium)
+	{
+		return 30.0f;
+	}
+	else if (t == TireType::Hard)
+	{
+		return 10.0f;
+	}
+}
+
+float KTEngine::CarModifyComponent::GetHorsePower()
+{
+	if (et == EngineType::V6)
+	{
+		return 200.0f;
+	}
+	else if (et == EngineType::V8)
+	{
+		return 300.0f;
+	}
+	else if (et == EngineType::V10)
+	{
+		return 600.0f;
 	}
 }

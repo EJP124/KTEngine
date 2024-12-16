@@ -7,6 +7,7 @@ namespace KTEngine
 {
 	class RigidBodyComponent;
 	class TransformComponent;
+	class CarModifyComponent;
 	class PlayerControllerComponent final : public Component
 	{
 	public:
@@ -15,11 +16,13 @@ namespace KTEngine
 		void Initialize() override;
 		void Terminate() override;
 		void Update(float deltaTime) override;
+		void Serialize(rapidjson::Document& doc, rapidjson::Value& value);
 
 	private:
 
 		RigidBodyComponent* mPlayerRb = nullptr;
 		TransformComponent* mTransformComponent = nullptr;
+		CarModifyComponent* mCarModifyComponent = nullptr;
 		
 		Vector3 moveVelocity = Vector3::Zero;
 		float force = 0.0f;

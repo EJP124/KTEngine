@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "ThirdPersonCameraComponent.h"
 
+#include "SaveUtil.h"
 #include "GameObject.h"
 
 #include "TransformComponent.h"
@@ -50,4 +51,13 @@ void ThirdPersonCameraComponent::Update(float deltaTime)
 		
 		
 	}
+}
+
+void ThirdPersonCameraComponent::Serialize(rapidjson::Document& doc, rapidjson::Value& value)
+{
+	Camera& mCamera = mCameraComponent->GetCamera();
+	rapidjson::Value componentValue(rapidjson::kObjectType);
+	SaveUtil::SaveVector3("Position", mCamera.GetPosition(), doc, componentValue);
+	SaveUtil::SaveVector3("LookAt", mCamera.GetPosition() + mCamera.GetDirection(), doc, componentValue);
+	value.AddMember("ThirdPersonCameraComponent", componentValue, doc.GetAllocator());
 }

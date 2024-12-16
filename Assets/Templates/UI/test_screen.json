@@ -1,7 +1,7 @@
 {
   "Components": {
     "UISpriteComponent": {
-      "Texture": "../../Assets/Textures/Images/cyan.jpg",
+      "Texture": "../../Assets/Textures/Images/Images/pannelBackground.jpg",
       "Position": [ 500.0, 10.0 ],
       "Pivot": "Top",
       "Rect": [ 0, 0, 320, 320 ]
