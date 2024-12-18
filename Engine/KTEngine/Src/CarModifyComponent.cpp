@@ -44,7 +44,7 @@ void CarModifyComponent::DebugUI()
 		}
 		ImGui::SameLine(0, 20);
 		bool useRaceBrake = bs == BrakeSystem::Race;
-		if (ImGui::Checkbox("SportBrake", &useRaceBrake))
+		if (ImGui::Checkbox("RaceBrake", &useRaceBrake))
 		{
 			bs = BrakeSystem::Race;
 		}
@@ -134,15 +134,15 @@ float CarModifyComponent::GetBrakeForce()
 {
 	if (bs == BrakeSystem::Stock)
 	{
-		return 100.0f;
+		return 1000.0f;
 	}
 	else if (bs == BrakeSystem::Sport)
 	{
-		return 200.0f;
+		return 1200.0f;
 	}
 	else if (bs == BrakeSystem::Race)
 	{
-		return 300.0f;
+		return 2500.0f;
 	}
 }
 
@@ -166,14 +166,14 @@ float KTEngine::CarModifyComponent::GetHorsePower()
 {
 	if (et == EngineType::V6)
 	{
-		return 200.0f;
+		return 100.0f;
 	}
 	else if (et == EngineType::V8)
 	{
-		return 300.0f;
+		return 200.0f;
 	}
 	else if (et == EngineType::V10)
 	{
-		return 600.0f;
+		return 300.0f;
 	}
 }

@@ -5,6 +5,7 @@
 #include "RigidBodyComponent.h"
 #include "TransformComponent.h"
 #include "CarModifyComponent.h"
+#include "UIButtonComponent.h"
 
 using namespace KTEngine;
 using namespace KTEngine::Graphics;
@@ -23,6 +24,8 @@ void PlayerControllerComponent::Terminate()
 	mCarModifyComponent = nullptr;
 	mTransformComponent = nullptr;
 	mPlayerRb = nullptr;
+	mButtonComponent = nullptr;
+	pannel = nullptr;
 }
 
 void PlayerControllerComponent::Update(float deltaTime)
@@ -62,11 +65,11 @@ void PlayerControllerComponent::Update(float deltaTime)
 		{
 			if (input->IsKeyDown(KeyCode::A))
 			{
-				turnAngle = { 0, -2, 0 };
+				turnAngle = { 0, -0.5, 0 };
 			}
 			else if (input->IsKeyDown(KeyCode::D))
 			{
-				turnAngle = { 0, 2, 0 };
+				turnAngle = { 0, 0.5, 0 };
 			}
 			else
 			{
@@ -85,8 +88,20 @@ void PlayerControllerComponent::Update(float deltaTime)
 	
 	if (input->IsKeyPressed(KeyCode::SPACE))
 	{
-		std::filesystem::path templatePath = "../../Assets/Templates/UI/test_screen.json";
-		GameObject* pannel = GetOwner().GetWorld().CreateGameObject("Pannel", templatePath, true);
+		if (!IsPannelOpen)
+		{
+			std::filesystem::path templatePath = "../../Assets/Templates/UI/test_screen.json";
+			pannel = GetOwner().GetWorld().CreateGameObject("Pannel", templatePath, true);
+			IsPannelOpen = true;
+		}
+		else
+		{
+			pannel->GetWorld().DestroyGameObject(pannel->GetHandle());
+			IsPannelOpen = false;
+		}
+		
+		//mButtonComponent = GetOwner().GetComponent<UIButtonComponent>();
+		//mButtonComponent->SetCallback([&]() {mCarModifyComponent->SetTireType(TireType::Medium); });
 	}
 }
 
