@@ -249,8 +249,18 @@ void GameWorld::DestroyGameObject(const GameObjectHandle& handle)
 	}
 
 	Slot& slot = mGameObjectSlots[handle.mIndex];
+	GameObject* gameObject = slot.gameObject.get();
+	if (gameObject->GetChildSize() != 0)
+	{
+		for (int i = 0; i < gameObject->GetChildSize(); ++i)
+		{
+			mToBeDestroyed.push_back(gameObject->GetChild(i)->GetHandle().mIndex);
+		}
+	}
+	
 	slot.generation++;
 	mToBeDestroyed.push_back(handle.mIndex);
+	
 }
 
 bool GameWorld::IsValid(const GameObjectHandle& handle)

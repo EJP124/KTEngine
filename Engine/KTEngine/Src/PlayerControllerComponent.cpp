@@ -92,6 +92,34 @@ void PlayerControllerComponent::Update(float deltaTime)
 		{
 			std::filesystem::path templatePath = "../../Assets/Templates/UI/test_screen.json";
 			pannel = GetOwner().GetWorld().CreateGameObject("Pannel", templatePath, true);
+
+			for (int i = 0; i < pannel->GetChildSize(); ++i)
+			{
+				UIButtonComponent* button = pannel->GetChild(i)->GetComponent<UIButtonComponent>();
+				switch (i)
+				{
+				case 0: button->SetCallback([&] {mCarModifyComponent->SetTireType(TireType::Soft); });
+					break;
+				case 1: button->SetCallback([&] {mCarModifyComponent->SetTireType(TireType::Medium); });
+					break;
+				case 2: button->SetCallback([&] {mCarModifyComponent->SetTireType(TireType::Hard); });
+					break;
+				case 3:	button->SetCallback([&] {mCarModifyComponent->SetBrakeSystem(BrakeSystem::Stock); });
+					break;
+				case 4:	button->SetCallback([&] {mCarModifyComponent->SetBrakeSystem(BrakeSystem::Sport); });
+					break;
+				case 5: button->SetCallback([&] {mCarModifyComponent->SetBrakeSystem(BrakeSystem::Race); });
+					break;
+				case 6: button->SetCallback([&] {mCarModifyComponent->SetEngineType(EngineType::V6); });
+					break;
+				case 7: button->SetCallback([&] {mCarModifyComponent->SetEngineType(EngineType::V8); });
+					break;
+				case 8: button->SetCallback([&] {mCarModifyComponent->SetEngineType(EngineType::V10); });
+					break;
+				default:
+					break;
+				}
+			}
 			IsPannelOpen = true;
 		}
 		else
@@ -100,8 +128,6 @@ void PlayerControllerComponent::Update(float deltaTime)
 			IsPannelOpen = false;
 		}
 		
-		//mButtonComponent = GetOwner().GetComponent<UIButtonComponent>();
-		//mButtonComponent->SetCallback([&]() {mCarModifyComponent->SetTireType(TireType::Medium); });
 	}
 }
 

@@ -14,8 +14,7 @@ namespace KTEngine
 	};
 
 	using ButtonCallback = std::function<void()>;
-
-	class UIButtonComponent : public UIComponent
+	class UIButtonComponent  : public UIComponent
 	{
 	public:
 		SET_TYPE_ID(ComponentId::UIButton);

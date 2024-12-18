@@ -1,10 +1,9 @@
 {
   "Components": {
     "UIButtonComponent": {
-      "Position": [ 0, 0 ],
+      "Position": [ 300, 0 ],
       "Default": {
-        "Texture": "../../Assets/Textures/Images/Images/SoftTyre.png",
-        "Pivot": "Center",
+        "Texture": "../../Assets/Textures/Images/Images/HardTyre.png",
         "Scale": [ 1, 1 ]
       },
       "Hover": {

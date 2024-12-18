@@ -32,6 +32,7 @@ namespace KTEngine
 		void AddChild(GameObject* child) { mChildren.push_back(child); }
 		GameObject* GetChild(uint32_t index) { return mChildren[index]; }
 		const GameObject* GetChild(uint32_t index) const { return mChildren[index]; }
+		const int GetChildSize() { return mChildren.size(); }
 
 		template<class ComponentType>
 		ComponentType* AddComponent()

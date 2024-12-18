@@ -2,15 +2,21 @@
   "Components": {
     "UISpriteComponent": {
       "Texture": "../../Assets/Textures/Images/Images/pannelBackground.jpg",
-      "Scale": [ 2.0, 2.0 ],
+      "Scale": [ 3.0, 3.0 ],
       "Position": [ 600.0, 500.0 ],
       "Pivot": "Center",
       "Rect": [ 320, 320, 320, 320 ]
     }
   },
   "Children": {
-    "Button0": {
+    "SoftButton": {
       "Template": "../../Assets/Templates/UI/Button.json"
-        }
+    },
+    "MediumButton": {
+      "Template": "../../Assets/Templates/UI/MediumTyre.json"
+    },
+    "HardButton": {
+      "Template": "../../Assets/Templates/UI/HardTyre.json"
+    }
   }
 }

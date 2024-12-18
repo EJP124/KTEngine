@@ -153,6 +153,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{F6B0BFAF-E42B-
 		Assets\Templates\UI\BarBackground.json = Assets\Templates\UI\BarBackground.json
 		Assets\Templates\UI\BarFull.json = Assets\Templates\UI\BarFull.json
 		Assets\Templates\UI\Button.json = Assets\Templates\UI\Button.json
+		Assets\Templates\UI\HardTyre.json = Assets\Templates\UI\HardTyre.json
+		Assets\Templates\UI\MediumTyre.json = Assets\Templates\UI\MediumTyre.json
 		Assets\Templates\UI\test_screen.json = Assets\Templates\UI\test_screen.json
 	EndProjectSection
 EndProject

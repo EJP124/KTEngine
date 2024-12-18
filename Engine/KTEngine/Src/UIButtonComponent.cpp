@@ -50,6 +50,10 @@ void UIButtonComponent::Update(float deltaTime)
 		}
 		if (input->IsMouseDown(MouseButton::LBUTTON))
 		{
+			if (GetOwner().GetName() == "SoftButton")
+			{
+				
+			}
 			OnClick();
 		}
 	}
@@ -190,6 +194,11 @@ void UIButtonComponent::Deserialize(const rapidjson::Value& value)
 			const float b = color[2].GetFloat();
 			const float a = color[3].GetFloat();
 			mButtonStates[i].SetColor({ r,g,b,a });
+		}
+		if (buttonStateObj.HasMember("Rect"))
+		{
+			auto rect = buttonStateObj["Rect"].GetArray();
+			mButtonStates[i].SetRect(rect[0].GetFloat(), rect[1].GetFloat(), rect[2].GetFloat(), rect[3].GetFloat());
 		}
 		if (buttonStateObj.HasMember("Flip"))
 		{
