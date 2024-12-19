@@ -19,8 +19,8 @@ void TransformComponent::Serialize(rapidjson::Document& doc, rapidjson::Value& v
 {
 	rapidjson::Value componentValue(rapidjson::kObjectType);
 	SaveUtil::SaveVector3("Position", position, doc, componentValue);
-	SaveUtil::SaveQuaternion("Rotation", rotation, doc, componentValue);
-	SaveUtil::SaveVector3("Scale", scale, doc, componentValue);
+	//SaveUtil::SaveQuaternion("Rotation", rotation, doc, componentValue);
+	//SaveUtil::SaveVector3("Scale", scale, doc, componentValue);
 	value.AddMember("TransformComponent", componentValue, doc.GetAllocator());
 }
 

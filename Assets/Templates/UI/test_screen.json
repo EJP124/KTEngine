@@ -6,6 +6,12 @@
       "Position": [ 600.0, 500.0 ],
       "Pivot": "Center",
       "Rect": [ 320, 320, 320, 320 ]
+    },
+    "UITextComponent": {
+      "Text": "Hello",
+      "Position": [ 50, 50 ],
+      "Color": [ 288, 288, 288, 288 ],
+      "Size": 100.0
     }
   },
   "Children": {
@@ -17,6 +23,27 @@
     },
     "HardButton": {
       "Template": "../../Assets/Templates/UI/HardTyre.json"
+    },
+    "StockBrake": {
+      "Template": "../../Assets/Templates/UI/StockBrake.json"
+    },
+    "SportBrake": {
+      "Template": "../../Assets/Templates/UI/SportBrake.json"
+    },
+    "RaceBrake": {
+      "Template": "../../Assets/Templates/UI/RaceBrake.json"
+    },
+    "V6": {
+      "Template": "../../Assets/Templates/UI/V6.json"
+    },
+    "V8": {
+      "Template": "../../Assets/Templates/UI/V8.json"
+    },
+    "V10": {
+      "Template": "../../Assets/Templates/UI/V10.json"
+    },
+    "Save": {
+      "Template": "../../Assets/Templates/UI/Save.json"
     }
   }
 }

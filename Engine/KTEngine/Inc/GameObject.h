@@ -91,8 +91,8 @@ namespace KTEngine
 			return const_cast<ComponentType*>(thisConst->GetComponent<ComponentType>());
 		}
 
-	private:
 		void Save();
+	private:
 
 		std::string mName = "EMPTY";
 		bool mInitialized = false;

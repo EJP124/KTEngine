@@ -152,10 +152,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{F6B0BFAF-E42B-
 	ProjectSection(SolutionItems) = preProject
 		Assets\Templates\UI\BarBackground.json = Assets\Templates\UI\BarBackground.json
 		Assets\Templates\UI\BarFull.json = Assets\Templates\UI\BarFull.json
+		Assets\Templates\UI\test_screen.json = Assets\Templates\UI\test_screen.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TyreButton", "TyreButton", "{6CF9D2A1-50A4-45EA-B8C6-4B8355E5F9B5}"
+	ProjectSection(SolutionItems) = preProject
 		Assets\Templates\UI\Button.json = Assets\Templates\UI\Button.json
 		Assets\Templates\UI\HardTyre.json = Assets\Templates\UI\HardTyre.json
 		Assets\Templates\UI\MediumTyre.json = Assets\Templates\UI\MediumTyre.json
-		Assets\Templates\UI\test_screen.json = Assets\Templates\UI\test_screen.json
+		Assets\Templates\UI\Save.json = Assets\Templates\UI\Save.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BrakeButton", "BrakeButton", "{8F3C5B4C-2666-4529-939D-342051BD1B80}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Templates\UI\RaceBrake.json = Assets\Templates\UI\RaceBrake.json
+		Assets\Templates\UI\SportBrake.json = Assets\Templates\UI\SportBrake.json
+		Assets\Templates\UI\StockBrake.json = Assets\Templates\UI\StockBrake.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EngineButton", "EngineButton", "{F22B0E17-34E7-45B8-AB7E-DE1C9DCD1C3F}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Templates\UI\V10.json = Assets\Templates\UI\V10.json
+		Assets\Templates\UI\V6.json = Assets\Templates\UI\V6.json
+		Assets\Templates\UI\V8.json = Assets\Templates\UI\V8.json
 	EndProjectSection
 EndProject
 Global
@@ -554,6 +573,9 @@ Global
 		{D16A857B-7A41-4257-AB8E-1EF49E4A43AE} = {273A476C-CB08-4126-BE72-9D3C7D74CA94}
 		{0D034612-14E2-44E7-993A-72344A2CA7BD} = {DB27359A-0C22-40EA-A245-6E55D2489E5D}
 		{F6B0BFAF-E42B-42AF-8A07-3A7736337BC6} = {273A476C-CB08-4126-BE72-9D3C7D74CA94}
+		{6CF9D2A1-50A4-45EA-B8C6-4B8355E5F9B5} = {F6B0BFAF-E42B-42AF-8A07-3A7736337BC6}
+		{8F3C5B4C-2666-4529-939D-342051BD1B80} = {F6B0BFAF-E42B-42AF-8A07-3A7736337BC6}
+		{F22B0E17-34E7-45B8-AB7E-DE1C9DCD1C3F} = {F6B0BFAF-E42B-42AF-8A07-3A7736337BC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2B429F6-D445-4022-B927-3B503F632F7A}

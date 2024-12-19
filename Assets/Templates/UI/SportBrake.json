@@ -1,0 +1,15 @@
+{
+  "Components": {
+    "UIButtonComponent": {
+      "Position": [ 150, 150 ],
+      "Default": {
+        "Texture": "../../Assets/Textures/Images/Images/SportBrake.png",
+        "Scale": [ 1, 1 ]
+      },
+      "Hover": {
+        "Texture": "../../Assets/Textures/Images/button_on.png",
+        "Scale": [ 0.15, 0.15 ]
+      }
+    }
+  }
+}

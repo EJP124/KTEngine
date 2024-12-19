@@ -116,6 +116,8 @@ void PlayerControllerComponent::Update(float deltaTime)
 					break;
 				case 8: button->SetCallback([&] {mCarModifyComponent->SetEngineType(EngineType::V10); });
 					break;
+				case 9: button->SetCallback([&] {GetOwner().Save(); });
+					break;
 				default:
 					break;
 				}
