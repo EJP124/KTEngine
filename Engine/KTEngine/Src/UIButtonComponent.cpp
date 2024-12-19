@@ -18,7 +18,7 @@ void UIButtonComponent::Initialize()
 			mButtonStates[i].Initialize(mButtonStateTextures[i]);
 		}
 	}
-
+	mCurrentState = ButtonState::Default;
 	UIRenderService* uiRenderService = GetOwner().GetWorld().GetService<UIRenderService>();
 	uiRenderService->Register(this);
 }
@@ -36,8 +36,6 @@ void UIButtonComponent::Terminate()
 
 void UIButtonComponent::Update(float deltaTime)
 {
-	mCurrentState = ButtonState::Default;
-
 	InputSystem* input = InputSystem::Get();
 	const int mouseX = input->GetMouseScreenX();
 	const int mouseY = input->GetMouseScreenY();
@@ -47,15 +45,16 @@ void UIButtonComponent::Update(float deltaTime)
 		if (input->IsMouseDown(MouseButton::LBUTTON))
 		{
 			mCurrentState = ButtonState::Click;
+			mLastState = mCurrentState;
 		}
 		if (input->IsMouseDown(MouseButton::LBUTTON))
 		{
-			if (GetOwner().GetName() == "SoftButton")
-			{
-				
-			}
 			OnClick();
 		}
+	}
+	else
+	{
+		mCurrentState = mLastState;
 	}
 }
 

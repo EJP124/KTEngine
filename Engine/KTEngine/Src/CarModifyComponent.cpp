@@ -74,7 +74,7 @@ void CarModifyComponent::Serialize(rapidjson::Document& doc, rapidjson::Value& v
 	rapidjson::Value componentValue(rapidjson::kObjectType);
 	SaveUtil::SaveInt("Tire", static_cast<int>(t), doc,componentValue);
 	SaveUtil::SaveInt("Brake", static_cast<int>(bs), doc,componentValue);
-	SaveUtil::SaveInt("Enigne", static_cast<int>(et), doc,componentValue);
+	SaveUtil::SaveInt("Engine", static_cast<int>(et), doc,componentValue);
 	value.AddMember("CarModifyComponent", componentValue, doc.GetAllocator());
 }
 

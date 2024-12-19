@@ -127,9 +127,69 @@ void PlayerControllerComponent::Update(float deltaTime)
 		else
 		{
 			pannel->GetWorld().DestroyGameObject(pannel->GetHandle());
+			pannel = nullptr;
 			IsPannelOpen = false;
 		}
 		
+	}
+
+	if (pannel != nullptr)
+	{
+		if (mCarModifyComponent->GetTireFriction() == 60.0f)
+		{
+			pannel->GetChild(0)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Click);
+			pannel->GetChild(1)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(2)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+
+		}
+		else if (mCarModifyComponent->GetTireFriction() == 30.0f)
+		{
+			pannel->GetChild(0)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(1)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Click);
+			pannel->GetChild(2)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+		}
+		else 
+		{
+			pannel->GetChild(0)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(1)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(2)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Click);
+		}
+		if (mCarModifyComponent->GetBrakeForce() == 1000.0f)
+		{
+			pannel->GetChild(3)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Click);
+			pannel->GetChild(4)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(5)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+		}
+		else if (mCarModifyComponent->GetBrakeForce() == 1200.0f)
+		{
+			pannel->GetChild(3)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(4)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Click);
+			pannel->GetChild(5)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+		}
+		else
+		{
+			pannel->GetChild(3)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(4)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(5)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Click);
+		}
+		if (mCarModifyComponent->GetHorsePower() == 100.0f)
+		{
+			pannel->GetChild(6)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Click);
+			pannel->GetChild(7)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(8)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+		}
+		else if (mCarModifyComponent->GetHorsePower() == 200.0f)
+		{
+			pannel->GetChild(6)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(7)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Click);
+			pannel->GetChild(8)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+		}
+		else
+		{
+			pannel->GetChild(6)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(7)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Default);
+			pannel->GetChild(8)->GetComponent<UIButtonComponent>()->SetCurrentState(ButtonState::Click);
+		}
 	}
 }
 

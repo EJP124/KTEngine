@@ -27,6 +27,11 @@ namespace KTEngine
 		Math::Vector2 GetPosition(bool includeOrigin = true);
 
 		void SetCallback(ButtonCallback cb);
+		void SetCurrentState(ButtonState state) 
+		{
+			mCurrentState = state; 
+			mLastState = mCurrentState;
+		}
 
 	private:
 		void OnClick();
@@ -36,5 +41,6 @@ namespace KTEngine
 		Graphics::UISprite mButtonStates[static_cast<uint32_t>(ButtonState::Count)];
 		std::string mButtonStateTextures[static_cast<uint32_t>(ButtonState::Count)];
 		ButtonState mCurrentState = ButtonState::Default;
+		ButtonState mLastState = ButtonState::Default;
 	};
 }

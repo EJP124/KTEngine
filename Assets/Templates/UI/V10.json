@@ -6,9 +6,8 @@
         "Texture": "../../Assets/Textures/Images/Images/V10.png",
         "Scale": [ 1, 1 ]
       },
-      "Hover": {
-        "Texture": "../../Assets/Textures/Images/button_on.png",
-        "Scale": [ 0.15, 0.15 ]
+      "Click": {
+        "Texture": "../../Assets/Textures/Images/Images/V10Chose.png"
       }
     }
   }

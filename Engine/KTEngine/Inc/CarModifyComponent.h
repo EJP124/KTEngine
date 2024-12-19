@@ -34,7 +34,10 @@ namespace KTEngine
 		void Deserialize(const rapidjson::Value& value) override;
 
 		
-		void SetTireType(TireType tyre) { t = tyre; }
+		void SetTireType(TireType tyre)
+		{
+			t = tyre;
+		}
 		void SetBrakeSystem(BrakeSystem brake) { bs = brake; }
 		void SetEngineType(EngineType engine) { et = engine; }
 		float GetBrakeForce();

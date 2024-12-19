@@ -7,9 +7,9 @@
         "Pivot": "Center",
         "Scale": [ 1, 1 ]
       },
-      "Hover": {
-        "Texture": "../../Assets/Textures/Images/button_on.png",
-        "Scale": [ 0.15, 0.15 ]
+      "Click": {
+        "Texture": "../../Assets/Textures/Images/Images/SoftTyreChose.png",
+        "Scale": [ 1, 1 ]
       }
     }
   }
